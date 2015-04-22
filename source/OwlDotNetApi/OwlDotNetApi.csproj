@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>7.10.6030</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1C6FFAC7-7E9F-479B-B15C-BCE7AB3653AC}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon />
+    <AssemblyKeyContainerName />
+    <AssemblyName>OwlDotNetApi</AssemblyName>
+    <AssemblyOriginatorKeyFile />
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RootNamespace>OwlDotNetApi</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject />
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>0.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile />
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>doc\documentation.xml</DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn />
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile />
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile />
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn />
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="InvalidOwlException.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="IOwlAnnotationProperty.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="IOwlClass.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="IOwlCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="IOwlDataRange.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="IOwlDatatype.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="IOwlDatatypeProperty.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="IOwlEdge.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="IOwlEdgeCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="IOwlEdgeList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="IOwlGenerator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="IOwlGraph.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="IOwlIndividual.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="IOwlLiteral.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="IOwlNamespaceCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="IOwlNode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="IOwlNodeCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="IOwlObjectProperty.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="IOwlOntology.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="IOwlOntologyProperty.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="IOwlParser.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="IOwlProperty.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="IOwlResource.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="IOwlRestriction.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="IOwlVisitor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="IOwlXmlGenerator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="IOwlXmlParser.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OwlAnnotationProperty.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OwlClass.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OwlCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OwlDataRange.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OwlDatatype.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OwlDatatypeProperty.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OwlEdge.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OwlEdgeCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OwlEdgeList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OwlGenerator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OwlGraph.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OwlIndividual.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OwlLiteral.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OwlNamespaceCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OwlNode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OwlNodeCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OwlObjectProperty.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OwlOntology.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OwlOntologyProperty.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OwlParser.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OwlProperty.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OwlResource.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OwlRestriction.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OwlXmlGenerator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OwlXmlParser.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Content Include="license.txt" />
+    <Content Include="readme.txt" />
+    <Content Include="releasenotes.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent />
+    <PostBuildEvent />
+  </PropertyGroup>
+</Project>

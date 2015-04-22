@@ -1,0 +1,2934 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OwlDotNetApi</name>
+    </assembly>
+    <members>
+        <member name="T:OwlDotNetApi.InvalidOwlException">
+            <summary>
+            Represents an exception that is thrown when invalid OWL Syntax is encountered by the parser
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.InvalidOwlException.#ctor">
+            <summary>
+            Initializes a new instance of the InvalidOwlException class with an empty message
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.InvalidOwlException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the InvalidOwlException class with the given message
+            </summary>
+            <param name="message">A string describing a reason for the exception</param>
+        </member>
+        <member name="P:OwlDotNetApi.InvalidOwlException.Message">
+            <summary>
+            Gets a message describing the exeption or an empty string
+            </summary>
+        </member>
+        <member name="T:OwlDotNetApi.IOwlAnnotationProperty">
+            <summary>
+            Represents a OWL Node of type owl:AnnotationProperty
+            </summary>
+        </member>
+        <member name="T:OwlDotNetApi.IOwlProperty">
+            <summary>
+            Represents a OWL Node of type owl:Property
+            </summary>
+        </member>
+        <member name="T:OwlDotNetApi.IOwlResource">
+            <summary>
+            Represents a OWL Node of type owl:Resource
+            </summary>
+        </member>
+        <member name="T:OwlDotNetApi.IOwlNode">
+            <summary>
+            Represents a Node in the OWL Graph
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlNode.AttachChildEdge(OwlDotNetApi.IOwlEdge)">
+            <summary>
+            When implemented by a class, attaches a child edge to this IOwlNode
+            </summary>
+            <param name="edge">The edge to attach</param>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlNode.AttachParentEdge(OwlDotNetApi.IOwlEdge)">
+            <summary>
+            When implemented by a class, attaches a parent edge to this node
+            </summary>
+            <param name="edge">The edge to attach</param>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlNode.DetachChildEdge(OwlDotNetApi.IOwlEdge)">
+            <summary>
+            When implemented by a class, detaches a child edge from this node
+            </summary>
+            <param name="edge">The edge to detach</param>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlNode.DetachParentEdge(OwlDotNetApi.IOwlEdge)">
+            <summary>
+            When implemented by a class, detaches a parent edge from this node
+            </summary>
+            <param name="edge">The edge to detach</param>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlNode.Accept(OwlDotNetApi.IOwlVisitor,System.Object)">
+            <summary>
+            When implemented by a class, it accepts a message and retransfers it back to the visitor
+            </summary>
+            <param name="visitor">The actual visitor in the pattern</param>
+            <param name="parent">The parent object of the node to be generated</param>
+        </member>
+        <member name="P:OwlDotNetApi.IOwlNode.ChildEdges">
+            <summary>
+            When implemented by a class, gets the Collection of child edges associated with this node
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.IOwlNode.ParentEdges">
+            <summary>
+            When implemented by a class, gets the collection of parent edges associated with this node
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.IOwlNode.ID">
+            <summary>
+            When implemented by a class, gets or sets the ID of this IOwlNode
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.IOwlNode.Visited">
+            <summary>
+            When implemented by a class, gets or sets the visited flag of this IOwlNode
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.IOwlNode.LangID">
+            <summary>
+            When implemented by a class, gets or sets the Language ID of this node
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.IOwlResource.Type">
+            <summary>
+            The edge specifying the type of this collection
+            </summary>
+        </member>
+        <member name="T:OwlDotNetApi.IOwlClass">
+            <summary>
+            Represents a OWL Node of type owl:Class
+            </summary>
+        </member>
+        <member name="T:OwlDotNetApi.IOwlCollection">
+            <summary>
+            Represents an OWL List.
+            </summary>
+        </member>
+        <member name="T:OwlDotNetApi.IOwlDataRange">
+            <summary>
+            Represents a OWL Node of type owl:DataRange
+            </summary>
+        </member>
+        <member name="T:OwlDotNetApi.IOwlDatatype">
+            <summary>
+            Represents a OWL Node of type owl:Datatype
+            </summary>
+        </member>
+        <member name="T:OwlDotNetApi.IOwlDatatypeProperty">
+            <summary>
+            Represents a OWL Node of type owl:DatatypeProperty
+            </summary>
+        </member>
+        <member name="T:OwlDotNetApi.IOwlEdge">
+            <summary>
+            Defines a generalized mechanism for processing edges in the OWL Graph
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlEdge.AttachChildNode(OwlDotNetApi.IOwlNode)">
+            <summary>
+            When implemented by a class, attaches a Child Node to this IOwlEdge
+            </summary>
+            <param name="node">The IOwlNode to attach</param>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlEdge.AttachParentNode(OwlDotNetApi.IOwlNode)">
+            <summary>
+            When implemented by a class, attaches a Parent Node to this IOwlEdge
+            </summary>
+            <param name="node">The IOwlNode to attach</param>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlEdge.DetachChildNode">
+            <summary>
+            When implemented by a class, detachs the Child Node of this IOwlEdge
+            </summary>
+            <returns>The removed IOwlNode</returns>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlEdge.DetachParentNode">
+            <summary>
+            When implemented by a class, detaches the Parent Node of this IOwlEdge
+            </summary>
+            <returns>The removed IOwlNode</returns>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlEdge.Accept(OwlDotNetApi.IOwlVisitor,System.Object)">
+            <summary>
+            When implemented by a class, it accepts a message and retransfers it back to the visitor
+            </summary>
+            <param name="visitor">The actual visitor in the pattern</param>
+            <param name="parent">The parent object of the edge to be generated</param>
+        </member>
+        <member name="P:OwlDotNetApi.IOwlEdge.ChildNode">
+            <summary>
+            When implemented by a class, gets or sets the Child Node of this IOwlEdge
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.IOwlEdge.ParentNode">
+            <summary>
+            When implemented by a class, gets or sets the Parent Node of this IOwlEdge
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.IOwlEdge.ID">
+            <summary>
+            When implemented by a class, gets or sets the ID of this IOwlEdge
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.IOwlEdge.LangID">
+            <summary>
+            When implemented by a class, gets or sets the Language ID of this IOwlEdge
+            </summary>
+        </member>
+        <member name="T:OwlDotNetApi.IOwlEdgeCollection">
+            <summary>
+            Represents a collection of objects that implement the IOwlEdge interface. 
+            This collection maps edge IDs to objects that implement the IOwlEdgeList interface
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlEdgeCollection.Add(System.String,OwlDotNetApi.IOwlEdge)">
+            <summary>
+            When implemented by a class, adds the specified edge to this collection
+            </summary>
+            <param name="edgeID">The ID of the edge</param>
+            <param name="edge">The IOwlEdge object</param>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlEdgeCollection.Add(OwlDotNetApi.IOwlEdge)">
+            <summary>
+            When implemented by a class, adds the specified edge to this collection
+            </summary>
+            <param name="edge">The IOwlEdge object</param>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlEdgeCollection.GetEnumerator">
+            <summary>
+            When implemented by a class, gets an enumerator that can iterate through the collection
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlEdgeCollection.Contains(System.String)">
+            <summary>
+            When implemented by a class, determines whether the collection contains any edge with the specified ID
+            </summary>
+            <param name="edgeID">A string containing an ID</param>
+            <returns>True if this collection contains any edge with the specified ID</returns>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlEdgeCollection.Contains(OwlDotNetApi.IOwlEdge)">
+            <summary>
+            When implemented by a class, determines whether the collection contains the specified IOwlEdge object
+            </summary>
+            <param name="edge">An object that implements the IOwlEdge interface</param>
+            <returns>True if this collection contains the specified object</returns>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlEdgeCollection.Remove(OwlDotNetApi.IOwlEdge)">
+            <summary>
+            When implemented by a class, removes the specified IOwlEdge object
+            </summary>
+            <param name="edge">An object that implements the IOwlEdge interface</param>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlEdgeCollection.RemoveAll">
+            <summary>
+            When implemented by a class removes all the edges from this collection
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.IOwlEdgeCollection.Item(System.Int32)">
+            <summary>
+            When implemented by a class, returns the IOwlEdge at the specified index
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.IOwlEdgeCollection.Item(System.String)">
+            <summary>
+            When implemented by a class, returns a list of edges in this collection with the specified ID
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.IOwlEdgeCollection.Item(System.String,System.Int32)">
+            <summary>
+            When implemented by a class, returns the IOwlEdge at the given index from the list of edges with the specified ID
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.IOwlEdgeCollection.Count">
+            <summary>
+            When implemented by a class, returns the total number of edges in this collection
+            </summary>
+        </member>
+        <member name="T:OwlDotNetApi.IOwlEdgeList">
+            <summary>
+            Represents a collection of IOwlEdge objects
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlEdgeList.GetEnumerator">
+            <summary>
+            When implemented by a class, returns an enumerator that can iterate through the collection
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlEdgeList.Add(OwlDotNetApi.IOwlEdge)">
+            <summary>
+            When implemented by a class, adds an IOwlEdge object to the collection
+            </summary>
+            <param name="edge">The IOwlEdge to add to the collection</param>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlEdgeList.Contains(OwlDotNetApi.IOwlEdge)">
+            <summary>
+            When implemented by a class, determines whether the specified IOwlEdge is a member of this collection
+            </summary>
+            <param name="edge">An IOwlEdge</param>
+            <returns>True if the specified edge belongs to the collection.</returns>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlEdgeList.Remove(OwlDotNetApi.IOwlEdge)">
+            <summary>
+            When implemented by a class, removes the specified IOwlEdge object from the collection
+            </summary>
+            <param name="edge">The edge to remove</param>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlEdgeList.RemoveAll">
+            <summary>
+            When implemented by a class removes all the edges from this collection
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.IOwlEdgeList.Count">
+            <summary>
+            When implemented by a class, gets the total number of members in this collection
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.IOwlEdgeList.Item(System.Int32)">
+            <summary>
+            When implemented by a class, gets the IOwlEdge at the specified index
+            </summary>
+        </member>
+        <member name="T:OwlDotNetApi.IOwlGenerator">
+            <summary>
+            Represents an OWL Generator
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlGenerator.GenerateOwl(OwlDotNetApi.IOwlGraph,System.String)">
+            <summary>
+            When implemented by a class, it generates the graph to a file given by the uri.
+            </summary>
+            <param name="graph">The owl graph the needs to be generated</param>
+            <param name="uri">The uri representing the file that will be used as a destination of the graph</param>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlGenerator.GenerateOwl(OwlDotNetApi.IOwlGraph,System.Uri)">
+            <summary>
+            When implemented by a class, it generates the graph to a file given by the uri.
+            </summary>
+            <param name="graph">The owl graph the needs to be generated</param>
+            <param name="uri">The object of type Uri representing the file that will be used as a destination of the graph</param>
+        </member>
+        <member name="P:OwlDotNetApi.IOwlGenerator.StopOnErrors">
+            <summary>
+            Indicates whether the generator should throw an exception and stop when it encounters an error
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.IOwlGenerator.StopOnWarnings">
+            <summary>
+            Indicates whether the generator should throw an exception and stop when it encounters a warning
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.IOwlGenerator.Warnings">
+            <summary>
+            Represents a list of warning messages generated by the generator
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.IOwlGenerator.Errors">
+            <summary>
+            Represents a list of error messages generated by the generator
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.IOwlGenerator.Messages">
+            <summary>
+            Represents a list of logging messages
+            </summary>
+        </member>
+        <member name="T:OwlDotNetApi.IOwlGraph">
+            <summary>
+            Reprsents an OWL Graph comprising Nodes and Literals connected by Edges
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlGraph.AddEdge(OwlDotNetApi.IOwlEdge)">
+            <summary>
+            When implemented by a class, adds an edge to the OwlGraph
+            </summary>
+            <param name="edge">An object that implements the IOwlEdge interface</param>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlGraph.AddNode(System.String)">
+            <summary>
+            When implemented by a class, adds a new node to the OwlGraph
+            </summary>
+            <param name="nodeUri">A string representing the Uri of the new node</param>
+            <returns>The newly added node</returns>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlGraph.AddNode(OwlDotNetApi.IOwlNode)">
+            <summary>
+            When implemented by a class, adds a new node to the OwlGraph 
+            </summary>
+            <param name="node">The IOwlNode to add</param>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlGraph.AddLiteral(System.String)">
+            <summary>
+            When implemented by a class, adds a new literal to the OwlGraph
+            </summary>
+            <param name="literalValue">A string representing the value of the new literal</param>
+            <returns>The newly added IOwlLiteral</returns>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlGraph.AddLiteral(System.String,System.String,System.String)">
+            <summary>
+            When implemented by a class, adds a new literal to the OwlGraph
+            </summary>
+            <param name="datatypeUri">A string representing the URI that specifies the datatype of the new literal</param>
+            <param name="langID">A string representing the Language ID of the new Literal</param>
+            <param name="literalValue">A string representing the value of the new Literal</param>
+            <returns>The newly added IOwlLiteral</returns>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlGraph.AddLiteral(OwlDotNetApi.IOwlLiteral)">
+            <summary>
+            When implemented by a class, adds a new literal to the OwlGraph
+            </summary>
+            <param name="literal">The IOwlLiteral to add</param>
+        </member>
+        <member name="P:OwlDotNetApi.IOwlGraph.NameSpaces">
+            <summary>
+            When implemented by a class, gets the namespaces associated with this OWL Graph
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.IOwlGraph.Nodes">
+            <summary>
+            When implemented by a class, gets the collection of Nodes in this Graph
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.IOwlGraph.Literals">
+            <summary>
+            When implemented by a class, gets the collection of Literals in this Graph
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.IOwlGraph.Count">
+            <summary>
+            When implemented by a class, gets the number of nodes in this OWL Graph
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.IOwlGraph.Edges">
+            <summary>
+            When implementsd by a class, gets a collection of edges in this OwlGraph
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.IOwlGraph.Item(System.String)">
+            <summary>
+            When implemented by a class, gets the node with the specified ID from this graph
+            </summary>
+        </member>
+        <member name="T:OwlDotNetApi.IOwlIndividual">
+            <summary>
+            Represents a OWL Node of type owl:Individual
+            </summary>
+        </member>
+        <member name="T:OwlDotNetApi.IOwlLiteral">
+            <summary>
+            Represents a Literal in an OWL Graph
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.IOwlLiteral.Datatype">
+            <summary>
+            When implemented by a class, gets or sets the URI specifying the datatype of this IOwlLiteral
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.IOwlLiteral.Value">
+            <summary>
+            When implemented by a class, gets or sets the value of this literal
+            </summary>
+        </member>
+        <member name="T:OwlDotNetApi.IOwlNamespaceCollection">
+            <summary>
+            Represents a collection of Namespaces
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlNamespaceCollection.GetEnumerator">
+            <summary>
+            Gets an enumerator that can iterate through this collection.
+            </summary>
+            <returns>An object that implements that implements the <see cref="T:System.Collections.IEnumerator"/> interface.</returns>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlNamespaceCollection.Remove(System.String)">
+            <summary>
+            Removes a namespace from this collection
+            </summary>
+            <param name="name">The name of the namespace to remove</param>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlNamespaceCollection.RemoveAll">
+            <summary>
+            When implemented by a class removes all the namespaces from this collection
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.IOwlNamespaceCollection.Item(System.String)">
+            <summary>
+            When implemented by a class, gets or sets the namespace with the specified name
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.IOwlNamespaceCollection.Count">
+            <summary>
+            Gets the total number of namespaces in this collection.
+            </summary>
+        </member>
+        <member name="T:OwlDotNetApi.IOwlNodeCollection">
+            <summary>
+            Represents a collection of IOwlNode objects
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlNodeCollection.GetEnumerator">
+            <summary>
+            When implemented by a class, gets an enumerator that can iterate through the collection
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlNodeCollection.Add(System.String,OwlDotNetApi.IOwlNode)">
+            <summary>
+            When implemented by a class, adds a new node to the collection
+            </summary>
+            <param name="nodeID">A string containing the ID of the new node</param>
+            <param name="newNode">The new node to add</param>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlNodeCollection.Add(OwlDotNetApi.IOwlNode)">
+            <summary>
+            When implemented by a class, adds a new node to the collection
+            </summary>
+            <param name="newNode">The new node to add</param>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlNodeCollection.Remove(OwlDotNetApi.IOwlNode)">
+            <summary>
+            When implemented by a class, removes a node from the collection
+            </summary>
+            <param name="node"></param>
+            <returns>True if the node was found and removed</returns>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlNodeCollection.RemoveAll">
+            <summary>
+            When implemented by a class removes all the nodes from this collection
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlNodeCollection.Contains(OwlDotNetApi.IOwlNode)">
+            <summary>
+            When implemented by a class, determines whether the specified node exists in the collection
+            </summary>
+            <param name="node">An IOwlNode</param>
+            <returns>True if the specified node was found in the collection</returns>
+        </member>
+        <member name="P:OwlDotNetApi.IOwlNodeCollection.Count">
+            <summary>
+            When implemented by a class, gets the total number of IOwlNodes in this collection
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.IOwlNodeCollection.Item(System.String)">
+            <summary>
+            When implemented by a class, gets or sets the node with the given ID
+            </summary>
+        </member>
+        <member name="T:OwlDotNetApi.IOwlObjectProperty">
+            <summary>
+            Represents a OWL Node of type owl:ObjectProperty
+            </summary>
+        </member>
+        <member name="T:OwlDotNetApi.IOwlOntology">
+            <summary>
+            Represents a OWL Node of type owl:Ontology
+            </summary>
+        </member>
+        <member name="T:OwlDotNetApi.IOwlOntologyProperty">
+            <summary>
+            Represents a OWL Node of type owl:DatatypeProperty
+            </summary>
+        </member>
+        <member name="T:OwlDotNetApi.IOwlParser">
+            <summary>
+            Represents an OWL Parser
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlParser.ParseOwl(System.String,OwlDotNetApi.IOwlGraph)">
+            <summary>
+            When implemented by a class, parses the OWL at the given URI, into an existing graph
+            </summary>
+            <param name="uri">The Uri of the document to parse</param>
+            <param name="graph">An object that implements the IOwlGraph interface that will be used as the destination graph</param>
+            <returns>An object that implements the IOwlGraph interface</returns>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlParser.ParseOwl(System.String)">
+            <summary>
+            When implemented by a class, parses the OWL at the given URI
+            </summary>
+            <param name="uri">The Uri of the document to parse</param>
+            <returns>An object that implements the IOwlGraph interface</returns>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlParser.ParseOwl(System.Uri,OwlDotNetApi.IOwlGraph)">
+            <summary>
+            When implemented by a class, parses the OWL at the given URI, into an existing graph
+            </summary>
+            <param name="uri">The Uri of the document to parse</param>
+            <param name="graph">An object that implements the IOwlGraph interface that will be used as the destination graph</param>
+            <returns>An object that implements the IOwlGraph interface</returns>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlParser.ParseOwl(System.Uri)">
+            <summary>
+            When implemented by a class, parses the OWL at the given URI
+            </summary>
+            <param name="uri">The Uri of the document to parse</param>
+            <returns>An object that implements the IOwlGraph interface</returns>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlParser.ParseOwl(System.IO.Stream,OwlDotNetApi.IOwlGraph)">
+            <summary>
+            When implemented by a class, parses the OWL from a stream into an existing Graph
+            </summary>
+            <param name="inStream">The input stream for data</param>
+            <param name="graph">An object that implements the IOwlGraph interface that will be used as the destination graph</param>
+            <returns>An object that implements the IOwlGraph interface</returns>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlParser.ParseOwl(System.IO.Stream)">
+            <summary>
+            When implemented by a class, parses the OWL from a stream
+            </summary>
+            <param name="inStream">The input stream for data</param>
+            <returns>An object that implements the IOwlGraph interface</returns>
+        </member>
+        <member name="P:OwlDotNetApi.IOwlParser.StopOnErrors">
+            <summary>
+            Indicates whether the parser should throw an exception and stop when it encounters an error
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.IOwlParser.StopOnWarnings">
+            <summary>
+            Indicates whether the parser should throw an exception and stop when it encounters a warning
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.IOwlParser.Warnings">
+            <summary>
+            Represents a list of warning messages generated by the parser
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.IOwlParser.Errors">
+            <summary>
+            Represents a list of error messages generated by the parser
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.IOwlParser.Messages">
+            <summary>
+            Represents a list of logging messages
+            </summary>
+        </member>
+        <member name="T:OwlDotNetApi.IOwlRestriction">
+            <summary>
+            Represents a OWL Node of type owl:Restriction
+            </summary>
+        </member>
+        <member name="T:OwlDotNetApi.IOwlVisitor">
+            <summary>
+            This interface defines the type of object that the nodes and edges will 
+            accept. The Node hierarchy classes call back a Visiting 
+            object's Visit() methods; In so doing they identify their 
+            type. Implementors of this interface can create algorithms 
+            that operate differently on different type of Nodes. 
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlVisitor.Visit(OwlDotNetApi.OwlNode,System.Object)">
+            <summary>
+            Visit function to generate a regular node, used in the visitor patterns
+            </summary>
+            <param name="node">The actual node which needs to be generated</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlVisitor.Visit(OwlDotNetApi.OwlEdge,System.Object)">
+            <summary>
+            Visit function to generate the code for an edge.
+            </summary>
+            <param name="edge">The actual edge which needs to be generated</param>
+            <param name="parent">The parent object of the edge</param>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlVisitor.Visit(OwlDotNetApi.OwlLiteral,System.Object)">
+            <summary>
+            Visit function to generate some output, used in the visitor pattern
+            </summary>
+            <param name="node">The actual node which needs to be generated</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlVisitor.Visit(OwlDotNetApi.OwlClass,System.Object)">
+            <summary>
+            Visit function to generate some output, used in the visitor pattern
+            </summary>
+            <param name="node">The actual node which needs to be generated</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlVisitor.Visit(OwlDotNetApi.OwlDataRange,System.Object)">
+            <summary>
+            Visit function to generate some output, used in the visitor pattern
+            </summary>
+            <param name="node">The actual node which needs to be generated</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlVisitor.Visit(OwlDotNetApi.OwlAnnotationProperty,System.Object)">
+            <summary>
+            Visit function to generate some output, used in the visitor pattern
+            </summary>
+            <param name="node">The actual node which needs to be generated</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlVisitor.Visit(OwlDotNetApi.OwlDatatype,System.Object)">
+            <summary>
+            Visit function to generate some output, used in the visitor pattern
+            </summary>
+            <param name="node">The actual node which needs to be generated</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlVisitor.Visit(OwlDotNetApi.OwlDatatypeProperty,System.Object)">
+            <summary>
+            Visit function to generate some output, used in the visitor pattern
+            </summary>
+            <param name="node">The actual node which needs to be generated</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlVisitor.Visit(OwlDotNetApi.OwlIndividual,System.Object)">
+            <summary>
+            Visit function to generate some output, used in the visitor pattern
+            </summary>
+            <param name="node">The actual node which needs to be generated</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlVisitor.Visit(OwlDotNetApi.OwlObjectProperty,System.Object)">
+            <summary>
+            Visit function to generate some output, used in the visitor pattern
+            </summary>
+            <param name="node">The actual node which needs to be generated</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlVisitor.Visit(OwlDotNetApi.OwlOntology,System.Object)">
+            <summary>
+            Visit function to generate some output, used in the visitor pattern
+            </summary>
+            <param name="node">The actual node which needs to be generated</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlVisitor.Visit(OwlDotNetApi.OwlOntologyProperty,System.Object)">
+            <summary>
+            Visit function to generate some output, used in the visitor pattern
+            </summary>
+            <param name="node">The actual node which needs to be generated</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlVisitor.Visit(OwlDotNetApi.OwlProperty,System.Object)">
+            <summary>
+            Visit function to generate some output, used in the visitor pattern
+            </summary>
+            <param name="node">The actual node which needs to be generated</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlVisitor.Visit(OwlDotNetApi.OwlRestriction,System.Object)">
+            <summary>
+            Visit function to generate some output, used in the visitor pattern
+            </summary>
+            <param name="node">The actual node which needs to be generated</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlVisitor.Visit(OwlDotNetApi.OwlResource,System.Object)">
+            <summary>
+            Visit function to generate some output, used in the visitor pattern
+            </summary>
+            <param name="node">The actual node which needs to be generated</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlVisitor.Visit(OwlDotNetApi.OwlCollection,System.Object)">
+            <summary>
+            Visit function to generate some output, used in the visitor pattern
+            </summary>
+            <param name="node">The actual node which needs to be generated</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="T:OwlDotNetApi.IOwlXmlGenerator">
+            <summary>
+            Represents an OWL Xml Generator
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlXmlGenerator.GenerateOwl(OwlDotNetApi.IOwlGraph,System.Xml.XmlDocument)">
+            <summary>
+            When implemented by a class, it generates the OWL graph into an existing Xml Document
+            </summary>
+            <param name="graph">An object that implements the IOwlGraph interface which needs to be generated</param>
+            <param name="doc">The XmlDocument to use as a destination document</param>
+        </member>
+        <member name="T:OwlDotNetApi.IOwlXmlParser">
+            <summary>
+            Represents an OWL Xml Parser
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlXmlParser.ParseOwl(System.Xml.XmlDocument,OwlDotNetApi.IOwlGraph,System.String)">
+            <summary>
+            When implemented by a class, parses the OWL from the given XmlDocument, into an existing graph using the given xml:base uri
+            </summary>
+            <param name="doc">The XmlDocument to use as the source of the XML data</param>
+            <param name="graph">An object that implements the IOwlGraph interface</param>
+            <param name="xmlbaseUri">The xml:base Uri to use incase one is not found in the XML data or the graph</param>
+            <returns>An object that implements the IOwlGraph interface</returns>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlXmlParser.ParseOwl(System.Xml.XmlDocument,System.String)">
+            <summary>
+            When implemented by a class, parses the OWL from the given XmlDocument, using the given xml:base uri
+            </summary>
+            <param name="doc">The XmlDocument to use as the source of the XML data</param>
+            <param name="xmlbaseUri">The xml:base Uri to use incase one is not found in the XML data</param>
+            <returns>An object that implements the IOwlGraph interface</returns>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlXmlParser.ParseOwl(System.Xml.XmlDocument,OwlDotNetApi.IOwlGraph)">
+            <summary>
+            When implemented by a class, parses the OWL from the given XmlDocument, into an existing graph
+            </summary>
+            <param name="doc">The XmlDocument to use as the source of the XML data</param>
+            <param name="graph">An object that implements the IOwlGraph interface</param>
+            <returns>An object that implements the IOwlGraph interface</returns>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlXmlParser.ParseOwl(System.Xml.XmlDocument)">
+            <summary>
+            When implemented by a class, parses the OWL from the given XmlDocument
+            </summary>
+            <param name="doc">The XmlDocument to use as the source of the XML data</param>
+            <returns>An object that implements the IOwlGraph interface</returns>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlXmlParser.ParseOwl(System.IO.Stream,OwlDotNetApi.IOwlGraph,System.String)">
+            <summary>
+            When implemented by a class, parses the OWL from the given stream, into an existing graph using the given xml:base uri
+            </summary>
+            <param name="inStream">The Stream to use as the source of the XML data</param>
+            <param name="graph">An object that implements the IOwlGraph interface</param>
+            <param name="xmlbaseUri">The xml:base Uri to use incase one is not found in the XML data or the graph</param>
+            <returns>An object that implements the IOwlGraph interface</returns>
+        </member>
+        <member name="M:OwlDotNetApi.IOwlXmlParser.ParseOwl(System.IO.Stream,System.String)">
+            <summary>
+            When implemented by a class, parses the OWL from the given stream, using the given xml:base uri
+            </summary>
+            <param name="inStream">The Stream to use as the source of the XML data</param>
+            <param name="xmlbaseUri">The xml:base Uri to use incase one is not found in the XML data</param>
+            <returns>An object that implements the IOwlGraph interface</returns>
+        </member>
+        <member name="T:OwlDotNetApi.OwlAnnotationProperty">
+            <summary>
+            Represents an OWL resource of type owl:AnnotationProperty.
+            </summary>
+        </member>
+        <member name="T:OwlDotNetApi.OwlProperty">
+            <summary>
+            Represents an OWL resource of type rdf:Property.
+            </summary>
+        </member>
+        <member name="T:OwlDotNetApi.OwlResource">
+            <summary>
+            Represents a resource in the OWL Graph
+            </summary>
+        </member>
+        <member name="T:OwlDotNetApi.OwlNode">
+            <summary>
+            Represents a node in the OWL Graph
+            </summary>
+        </member>
+        <member name="F:OwlDotNetApi.OwlNode._nodeID">
+            <summary>
+            The URI of the node.
+            </summary>
+        </member>
+        <member name="F:OwlDotNetApi.OwlNode._visited">
+            <summary>
+            Flag to detect whether a node has been visited or not.
+            </summary>
+        </member>
+        <member name="F:OwlDotNetApi.OwlNode._parentEdges">
+            <summary>
+            The collection of parent edges associated with this node
+            </summary>
+        </member>
+        <member name="F:OwlDotNetApi.OwlNode._childEdges">
+            <summary>
+            The collection of child edges associated with this node
+            </summary>
+        </member>
+        <member name="F:OwlDotNetApi.OwlNode._langID">
+            <summary>
+            The language identifier for this node.
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.OwlNode.#ctor">
+            <summary>
+            Initializes a new instance of the OwlNode class.
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.OwlNode.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the OwlNode class with the specified URI.
+            </summary>
+            <param name="nodeUri">A string representing the URI of this node.</param>
+            <exception cref="T:System.UriFormatException">The specified URI is a not a well formed URI.</exception>
+        </member>
+        <member name="M:OwlDotNetApi.OwlNode.AttachChildEdge(OwlDotNetApi.IOwlEdge)">
+            <summary>
+            Attaches a child edge to this node.
+            </summary>
+            <param name="edge">An object that implements the IOwlEdge interface. This is the new edge to attach.</param>
+            <exception cref="T:System.ArgumentNullException">The specified edge is a null reference.</exception>
+        </member>
+        <member name="M:OwlDotNetApi.OwlNode.DetachChildEdge(OwlDotNetApi.IOwlEdge)">
+            <summary>
+            Detaches a child edge from this node.
+            </summary>
+            <param name="edge">An object that implements the IOwlEdge interface.</param>
+            <exception cref="T:System.ArgumentNullException">The specified edge is a null reference.</exception>
+        </member>
+        <member name="M:OwlDotNetApi.OwlNode.AttachParentEdge(OwlDotNetApi.IOwlEdge)">
+            <summary>
+            Attaches a parent edge to this node.
+            </summary>
+            <param name="edge">An object that implements the IOwlEdge interface.</param>
+            <exception cref="T:System.ArgumentNullException">The specified edge is a null reference.</exception>
+        </member>
+        <member name="M:OwlDotNetApi.OwlNode.DetachParentEdge(OwlDotNetApi.IOwlEdge)">
+            <summary>
+            Detaches a parent edge from this node.
+            </summary>
+            <param name="edge">An object that implements the IOwlNode interface.</param>
+            <exception cref="T:System.ArgumentNullException">The specified edge is a null reference.</exception>
+        </member>
+        <member name="M:OwlDotNetApi.OwlNode.IsAnonymous">
+            <summary>
+            Detects if the node is anonymous or not.
+            </summary>
+            <returns>True if the node is an anonymous one, and false otherwise.</returns>
+        </member>
+        <member name="M:OwlDotNetApi.OwlNode.IsLiteral">
+            <summary>
+            Detects if the node is a literal or not.
+            </summary>
+            <returns>True if the node is a literal, and false otherwise.</returns>
+        </member>
+        <member name="M:OwlDotNetApi.OwlNode.ToString">
+            <summary>
+            Returns an string representation of this Node
+            </summary>
+            <returns>A string containing the string representation of this Node.</returns>
+        </member>
+        <member name="M:OwlDotNetApi.OwlNode.Accept(OwlDotNetApi.IOwlVisitor,System.Object)">
+            <summary>
+            The virtual accept method which needs to be overridden by the subclasses in order to have a functional visitor
+            </summary>
+            <param name="visitor">The visitor doing all the work</param>
+            <param name="parent">The parent object of the node to be generated</param>
+        </member>
+        <member name="P:OwlDotNetApi.OwlNode.ID">
+            <summary>
+            Gets or sets the ID of this node
+            </summary>
+            <exception cref="T:System.UriFormatException">Attempt to set the ID to a value that is not a well formed URI.</exception>
+        </member>
+        <member name="P:OwlDotNetApi.OwlNode.Visited">
+            <summary>
+            Gets or sets the visited flag.
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.OwlNode.ParentEdges">
+            <summary>
+            Gets the parent edges of this Node.
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.OwlNode.ChildEdges">
+            <summary>
+            Gets the Child Edges of this node.
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.OwlNode.LangID">
+            <summary>
+            Gets or stes the language identifier for this node.
+            </summary>
+        </member>
+        <member name="F:OwlDotNetApi.OwlResource._typeEdge">
+            <summary>
+            The child edge that connects to a node specifying the type of the resource
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.OwlResource.Accept(OwlDotNetApi.IOwlVisitor,System.Object)">
+            <summary>
+            This is the accept method in the visitor pattern used for performing an action on the node.
+            </summary>
+            <param name="visitor">The visitor object itself</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="P:OwlDotNetApi.OwlResource.Type">
+            <summary>
+            Gets or sets the node that specifies the type of this resource
+            </summary>
+            <exception cref="T:System.ArgumentNullException">The specified value id null.</exception>
+        </member>
+        <member name="M:OwlDotNetApi.OwlProperty.#ctor">
+            <summary>
+            Initializes a new instance of the OwlProperty class
+            </summary>
+            <remarks>This constructor creates a new OwlNode with Uri rdf:Property and sets it as the child node of an edge with URI rdf:type</remarks>	
+        </member>
+        <member name="M:OwlDotNetApi.OwlProperty.#ctor(System.String,OwlDotNetApi.OwlNode)">
+            <summary>
+            Initializes a new instance of the OwlProperty class with the given Uri and TypeNode
+            </summary>
+            <param name="nodeUri">A string representing the Uri of this Resource</param>
+            <param name="typeNode">The OwlNode object to attach to the edge specifying the type. This is usually a node with ID rdf:Property.</param>
+            <exception cref="T:System.ArgumentNullException">typeNode is a null reference</exception>
+        </member>
+        <member name="M:OwlDotNetApi.OwlProperty.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the OwlProperty class with the given Uri
+            </summary>
+            <param name="nodeUri">A string representing the URI of this Resource</param>
+            <remarks>This constructor creates a new OwlNode with URI rdf:Property and sets it as the child node of an edge with URI rdf:type</remarks>	
+        </member>
+        <member name="M:OwlDotNetApi.OwlProperty.Accept(OwlDotNetApi.IOwlVisitor,System.Object)">
+            <summary>
+            This is the accept method in the visitor pattern used for performing an action on the node.
+            </summary>
+            <param name="visitor">The visitor object itself</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="M:OwlDotNetApi.OwlAnnotationProperty.#ctor">
+            <summary>
+            Initializes a new instance of the OwlAnnotationProperty class
+            </summary>
+            <remarks>This constructor creates a new OwlNode with Uri owl:AnnotationProperty and sets it as the child node of an edge with URI rdf:type</remarks>	
+        </member>
+        <member name="M:OwlDotNetApi.OwlAnnotationProperty.#ctor(System.String,OwlDotNetApi.OwlNode)">
+            <summary>
+            Initializes a new instance of the OwlAnnotationProperty class with the given Uri and TypeNode
+            </summary>
+            <param name="nodeUri">A string representing the Uri of this Property</param>
+            <param name="typeNode">The OwlNode object to attach to the edge specifying the type. This is usually a node with ID owl:AnnotationProperty.</param>
+            <exception cref="T:System.ArgumentNullException">typeNode is a null reference</exception>
+        </member>
+        <member name="M:OwlDotNetApi.OwlAnnotationProperty.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the OwlAnnotationProperty class with the given Uri
+            </summary>
+            <param name="nodeUri">A string representing the URI of this Property</param>
+            <remarks>This constructor creates a new OwlNode with URI owl:AnnotationProperty and sets it as the child node of an edge with URI rdf:type</remarks>	
+        </member>
+        <member name="M:OwlDotNetApi.OwlAnnotationProperty.Accept(OwlDotNetApi.IOwlVisitor,System.Object)">
+            <summary>
+            This is the accept method in the visitor pattern used for performing an action on the node.
+            </summary>
+            <param name="visitor">The visitor object itself</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="T:OwlDotNetApi.OwlClass">
+            <summary>
+            Represents an OWL resource of type owl:Class.
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.OwlClass.#ctor">
+            <summary>
+            Initializes a new instance of the OwlClass class
+            </summary>
+            <remarks>This constructor creates a new OwlNode with Uri owl:Class and sets it as the child node of an edge with URI rdf:type</remarks>	
+        </member>
+        <member name="M:OwlDotNetApi.OwlClass.#ctor(System.String,OwlDotNetApi.OwlNode)">
+            <summary>
+            Initializes a new instance of the OwlClass class with the given Uri and TypeNode
+            </summary>
+            <param name="nodeUri">A string representing the Uri of this Resource</param>
+            <param name="typeNode">The OwlNode object to attach to the edge specifying the type. This is usually a node with ID owl:Class.</param>
+            <exception cref="T:System.ArgumentNullException">typeNode is a null reference</exception>
+        </member>
+        <member name="M:OwlDotNetApi.OwlClass.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the OwlClass class with the given Uri
+            </summary>
+            <param name="nodeUri">A string representing the URI of this Resource</param>
+            <remarks>This constructor creates a new OwlNode with URI owl:Class and sets it as the child node of an edge with URI rdf:type</remarks>	
+        </member>
+        <member name="M:OwlDotNetApi.OwlClass.Accept(OwlDotNetApi.IOwlVisitor,System.Object)">
+            <summary>
+            This is the accept method in the visitor pattern used for performing an action on the node.
+            </summary>
+            <param name="visitor">The visitor object itself</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="T:OwlDotNetApi.OwlCollection">
+            <summary>
+            Represents an OWL resource of type rdf:List.
+            </summary>
+        </member>
+        <member name="F:OwlDotNetApi.OwlCollection._items">
+            <summary>
+            The list of items in the collection.
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.OwlCollection.#ctor">
+            <summary>
+            Initializes a new instance of the OwlCollection class
+            </summary>
+            <remarks>This constructor creates a new OwlNode with Uri rdf:List and sets it as the child node of an edge with URI rdf:type</remarks>	
+        </member>
+        <member name="M:OwlDotNetApi.OwlCollection.#ctor(System.String,OwlDotNetApi.OwlNode)">
+            <summary>
+            Initializes a new instance of the OwlCollection class with the given Uri and TypeNode
+            </summary>
+            <param name="nodeUri">A string representing the Uri of this Resource</param>
+            <param name="typeNode">The OwlNode object to attach to the edge specifying the type. This is usually a node with ID rdf:List.</param>
+            <exception cref="T:System.ArgumentNullException">typeNode is a null reference</exception>
+        </member>
+        <member name="M:OwlDotNetApi.OwlCollection.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the OwlCollection class with the given Uri
+            </summary>
+            <param name="nodeUri">A string representing the URI of this Resource</param>
+            <remarks>This constructor creates a new OwlNode with URI rdf:List and sets it as the child node of an edge with URI rdf:type</remarks>	
+        </member>
+        <member name="M:OwlDotNetApi.OwlCollection.GetEnumerator">
+            <summary>
+            Gets an enumerator that can iterate through this collection
+            </summary>
+            <returns>An object that implements the IEnumerator interface</returns>
+        </member>
+        <member name="M:OwlDotNetApi.OwlCollection.Add(OwlDotNetApi.IOwlNode)">
+            <summary>
+            Adds an OwlNode to this collection
+            </summary>
+            <param name="newNode">The Node to add.</param>
+            <exception cref="T:System.ArgumentNullException">newNode is a null reference.</exception>
+        </member>
+        <member name="M:OwlDotNetApi.OwlCollection.Remove(OwlDotNetApi.IOwlNode)">
+            <summary>
+            Removes a node object from the collection
+            </summary>
+            <param name="node">The node to remove</param>
+            <returns>True if the node was successfully removed</returns>
+            <remarks>If the node exists then it is removed by calling the ArrayList.Remove method which is an O(n) operation.</remarks>
+        </member>
+        <member name="M:OwlDotNetApi.OwlCollection.RemoveAll">
+            <summary>
+            Removes all the nodes from this collection
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.OwlCollection.Accept(OwlDotNetApi.IOwlVisitor,System.Object)">
+            <summary>
+            This is the accept method in the visitor pattern used for performing an action on the node.
+            </summary>
+            <param name="visitor">The visitor object itself</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="P:OwlDotNetApi.OwlCollection.Item(System.Int32)">
+            <summary>
+            Gets or sets the node at the specified index
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.OwlCollection.Count">
+            <summary>
+            Gets the number of nodes stored in this collection
+            </summary>
+        </member>
+        <member name="T:OwlDotNetApi.OwlDataRange">
+            <summary>
+            Represents an OWL resource of type owl:Class.
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.OwlDataRange.#ctor">
+            <summary>
+            Initializes a new instance of the OwlDataRange class
+            </summary>
+            <remarks>This constructor creates a new OwlNode with Uri owl:DataRange and sets it as the child node of an edge with URI rdf:type</remarks>	
+        </member>
+        <member name="M:OwlDotNetApi.OwlDataRange.#ctor(System.String,OwlDotNetApi.OwlNode)">
+            <summary>
+            Initializes a new instance of the OwlClass class with the given Uri and TypeNode
+            </summary>
+            <param name="nodeUri">A string representing the Uri of this Resource</param>
+            <param name="typeNode">The OwlNode object to attach to the edge specifying the type. This is usually a node with ID owl:Class.</param>
+            <exception cref="T:System.ArgumentNullException">typeNode is a null reference</exception>
+        </member>
+        <member name="M:OwlDotNetApi.OwlDataRange.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the OwlDataRange class with the given Uri
+            </summary>
+            <param name="nodeUri">A string representing the URI of this Resource</param>
+            <remarks>This constructor creates a new OwlNode with URI owl:DataRange and sets it as the child node of an edge with URI rdf:type</remarks>	
+        </member>
+        <member name="M:OwlDotNetApi.OwlDataRange.Accept(OwlDotNetApi.IOwlVisitor,System.Object)">
+            <summary>
+            This is the accept method in the visitor pattern used for performing an action on the node.
+            </summary>
+            <param name="visitor">The visitor object itself</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="T:OwlDotNetApi.OwlDatatype">
+            <summary>
+            Represents an OWL resource of type rdfs:Datatype.
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.OwlDatatype.#ctor">
+            <summary>
+            Initializes a new instance of the OwlDatatype class
+            </summary>
+            <remarks>This constructor creates a new OwlNode with Uri rdfs:Datatype and sets it as the child node of an edge with URI rdf:type</remarks>	
+        </member>
+        <member name="M:OwlDotNetApi.OwlDatatype.#ctor(System.String,OwlDotNetApi.OwlNode)">
+            <summary>
+            Initializes a new instance of the OwlDatatype class with the given Uri and TypeNode
+            </summary>
+            <param name="nodeUri">A string representing the Uri of this Resource</param>
+            <param name="typeNode">The OwlNode object to attach to the edge specifying the type. This is usually a node with ID rdfs:Datatype.</param>
+            <exception cref="T:System.ArgumentNullException">typeNode is a null reference</exception>
+        </member>
+        <member name="M:OwlDotNetApi.OwlDatatype.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the OwlDatatype class with the given Uri
+            </summary>
+            <param name="nodeUri">A string representing the URI of this Resource</param>
+            <remarks>This constructor creates a new OwlNode with URI rdfs:Datatype and sets it as the child node of an edge with URI rdf:type</remarks>	
+        </member>
+        <member name="M:OwlDotNetApi.OwlDatatype.Accept(OwlDotNetApi.IOwlVisitor,System.Object)">
+            <summary>
+            This is the accept method in the visitor pattern used for performing an action on the node.
+            </summary>
+            <param name="visitor">The visitor object itself</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="T:OwlDotNetApi.OwlDatatypeProperty">
+            <summary>
+            Represents an OWL resource of type owl:DatatypeProperty.
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.OwlDatatypeProperty.#ctor">
+            <summary>
+            Initializes a new instance of the OwlDatatypeProperty class
+            </summary>
+            <remarks>This constructor creates a new OwlNode with Uri owl:DatatypeProperty and sets it as the child node of an edge with URI rdf:type</remarks>	
+        </member>
+        <member name="M:OwlDotNetApi.OwlDatatypeProperty.#ctor(System.String,OwlDotNetApi.OwlNode)">
+            <summary>
+            Initializes a new instance of the OwlDatatypeProperty class with the given Uri and TypeNode
+            </summary>
+            <param name="nodeUri">A string representing the Uri of this Resource</param>
+            <param name="typeNode">The OwlNode object to attach to the edge specifying the type. This is usually a node with ID owl:DatatypeProperty.</param>
+            <exception cref="T:System.ArgumentNullException">typeNode is a null reference</exception>
+        </member>
+        <member name="M:OwlDotNetApi.OwlDatatypeProperty.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the OwlDatatypeProperty class with the given Uri
+            </summary>
+            <param name="nodeUri">A string representing the URI of this Resource</param>
+            <remarks>This constructor creates a new OwlNode with URI owl:DatatypeProperty and sets it as the child node of an edge with URI rdf:type</remarks>	
+        </member>
+        <member name="M:OwlDotNetApi.OwlDatatypeProperty.Accept(OwlDotNetApi.IOwlVisitor,System.Object)">
+            <summary>
+            This is the accept method in the visitor pattern used for performing an action on the node.
+            </summary>
+            <param name="visitor">The visitor object itself</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="T:OwlDotNetApi.OwlEdge">
+            <summary>
+            Represents an Edge in the OWL Graph
+            </summary>
+        </member>
+        <member name="F:OwlDotNetApi.OwlEdge.DIRECTED">
+            <summary>
+            Static value representing the value for a directed edge.
+            </summary>
+        </member>
+        <member name="F:OwlDotNetApi.OwlEdge.UNDIRECTED">
+            <summary>
+            Static value representing the value for an undirected edge.
+            </summary>
+        </member>
+        <member name="F:OwlDotNetApi.OwlEdge._directed">
+            <summary>
+            The status of the edge. It can be either directed or undirected.
+            </summary>
+        </member>
+        <member name="F:OwlDotNetApi.OwlEdge._parentNode">
+            <summary>
+            The parent node of this edge
+            </summary>
+        </member>
+        <member name="F:OwlDotNetApi.OwlEdge._childNode">
+            <summary>
+            The child node of this edge
+            </summary>
+        </member>
+        <member name="F:OwlDotNetApi.OwlEdge._edgeID">
+            <summary>
+            The URI of this edge
+            </summary>
+        </member>
+        <member name="F:OwlDotNetApi.OwlEdge._langID">
+            <summary>
+            The language ID of this edge
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.OwlEdge.#ctor">
+            <summary>
+            Initializes a new instance of the OwlEdge class. Sets the ID, ChildNode and ParentNode properties to null
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.OwlEdge.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the OwlEdge class with the given URI
+            </summary>
+            <param name="edgeUri">A string representing the Uri of this edge. The ChildNode and ParentNode properties are set to null</param>
+            <exception cref="T:System.UriFormatException">The specified edgeUri was not a well formed URI</exception>
+        </member>
+        <member name="M:OwlDotNetApi.OwlEdge.AttachChildNode(OwlDotNetApi.IOwlNode)">
+            <summary>
+            Attaches a Child node to this edge
+            </summary>
+            <param name="node">The node to attach</param>
+            <exception cref="T:System.ArgumentNullException">The specified node is a null reference</exception>
+        </member>
+        <member name="M:OwlDotNetApi.OwlEdge.DetachChildNode">
+            <summary>
+            Detaches the child node
+            </summary>
+            <returns>The newly detached child node. Returns null if no child node was present</returns>
+        </member>
+        <member name="M:OwlDotNetApi.OwlEdge.AttachParentNode(OwlDotNetApi.IOwlNode)">
+            <summary>
+            Attaches a parent node to this edge
+            </summary>
+            <param name="node">The node to attach</param>
+            <exception cref="T:System.ArgumentNullException">The specified node is a null reference</exception>
+        </member>
+        <member name="M:OwlDotNetApi.OwlEdge.DetachParentNode">
+            <summary>
+            Detaches the parent node from this edge
+            </summary>
+            <returns>The newly detached parent node. Returns null if no parent node was present</returns>
+        </member>
+        <member name="M:OwlDotNetApi.OwlEdge.Accept(OwlDotNetApi.IOwlVisitor,System.Object)">
+            <summary>
+            The virtual accept method which needs to be overridden by the subclasses in order to have a functional visitor
+            </summary>
+            <param name="visitor">The visitor used in the generator</param>
+            <param name="parent">The parent object of the edge to be generated</param>
+        </member>
+        <member name="P:OwlDotNetApi.OwlEdge.Directed">
+            <summary>
+            Gets or sets the status of the edge
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.OwlEdge.ParentNode">
+            <summary>
+            Gets or sets the parent node of this edge
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.OwlEdge.ChildNode">
+            <summary>
+            Gets or sets the child node of this edge
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.OwlEdge.ID">
+            <summary>
+            Gets or sets the URI of this edge
+            </summary>
+            <exception cref="T:System.UriFormatException">The specified value is a null reference</exception>
+        </member>
+        <member name="P:OwlDotNetApi.OwlEdge.LangID">
+            <summary>
+            Gets or sets the Language ID of this edge
+            </summary>
+            <remarks>This language ID is inherited by all child nodes and edges unless overridden</remarks>
+        </member>
+        <member name="T:OwlDotNetApi.OwlEdgeCollection">
+            <summary>
+            Represents a collection of edges. This class maps edge IDs to lists of OwlEdge objects
+            </summary>
+        </member>
+        <member name="F:OwlDotNetApi.OwlEdgeCollection._edgeMap">
+            <summary>
+            The hashtable containing the map
+            </summary>
+        </member>
+        <member name="F:OwlDotNetApi.OwlEdgeCollection._edges">
+            <summary>
+            List of all the edges in this collection
+            </summary>
+        </member>
+        <member name="F:OwlDotNetApi.OwlEdgeCollection._edgeIndexMap">
+            <summary>
+            Map of Edge objects to an index into the list of edges
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.OwlEdgeCollection.#ctor">
+            <summary>
+            Initializes a new instance of the OwlEdgeCollection class.
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.OwlEdgeCollection.GetEnumerator">
+            <summary>
+            Gets an enumerator that can iterate through the collection
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.OwlEdgeCollection.Add(OwlDotNetApi.IOwlEdge)">
+            <summary>
+            Adds an edge to this collection
+            </summary>
+            <param name="edge">An object that implements the IOwlEdge interface</param>
+            <exception cref="T:System.ArgumentNullException">The specified edge is a null reference</exception>
+        </member>
+        <member name="M:OwlDotNetApi.OwlEdgeCollection.Add(System.String,OwlDotNetApi.IOwlEdge)">
+            <summary>
+            Adds an edge to this collection
+            </summary>
+            <param name="edgeID">The ID of the edge</param>
+            <param name="edge">An object that implements the IOwlEdge interface</param>
+            <exception cref="T:System.ArgumentNullException">The specified edge is a null reference or the specified edgeID is a null reference</exception>
+        </member>
+        <member name="M:OwlDotNetApi.OwlEdgeCollection.Remove(OwlDotNetApi.IOwlEdge)">
+            <summary>
+            Removes the specified edge object if it exists.
+            </summary>
+            <param name="edge">An object that implements the IOwlEdge interface</param>
+            <remarks>This method uses object.Equals to determine whether the specified edge exists and then removes it if it is present in the collection</remarks>
+        </member>
+        <member name="M:OwlDotNetApi.OwlEdgeCollection.Contains(System.String)">
+            <summary>
+            Determines whether this collection contains any edges with the specified edge ID
+            </summary>
+            <param name="edgeID">A string containing the edge ID</param>
+            <returns>True if there are any edges in this collection with the specified ID</returns>
+        </member>
+        <member name="M:OwlDotNetApi.OwlEdgeCollection.RemoveAll">
+            <summary>
+            Removes all the edges from this collection
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.OwlEdgeCollection.Contains(OwlDotNetApi.IOwlEdge)">
+            <summary>
+            Determines whether the specified edge object is present in this collection
+            </summary>
+            <param name="edge">An object that implements the IOwlEdge interface</param>
+            <returns>True if this collection contains the specified edge object</returns>
+            <remarks>This method uses object.Equals to determine whether the specified edge object exists in the collection</remarks>
+        </member>
+        <member name="P:OwlDotNetApi.OwlEdgeCollection.Item(System.String)">
+            <summary>
+            Returns a list of edges with the specified Edge ID
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.OwlEdgeCollection.Item(System.String,System.Int32)">
+            <summary>
+            Returns the edge at the given index from the list of edges with the specified ID
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.OwlEdgeCollection.Item(System.Int32)">
+            <summary>
+            Returns an edge at the given index
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.OwlEdgeCollection.Count">
+            <summary>
+            Returns the total number of edges contained in this collection
+            </summary>
+        </member>
+        <member name="T:OwlDotNetApi.OwlEdgeList">
+            <summary>
+            Represents a collection of OwlEdge objects
+            </summary>
+            <remarks>This class implements the IOwlEdgeCollection interface.
+            This collection has been implemented using an Arraylist and this enables the collection to have duplicate entries.
+            This is required because a particular node in the OWL graph can have multiple child (or parent) edges that point to distinct nodes.</remarks>
+        </member>
+        <member name="F:OwlDotNetApi.OwlEdgeList._edges">
+            <summary>
+            An arraylist of edges
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.OwlEdgeList.#ctor">
+            <summary>
+            Initializes a new instance of this collection
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.OwlEdgeList.#ctor(OwlDotNetApi.IOwlEdgeList)">
+            <summary>
+            Initializes a new instance of this collection from an existing one
+            </summary>
+            <param name="edges"></param>
+        </member>
+        <member name="M:OwlDotNetApi.OwlEdgeList.GetEnumerator">
+            <summary>
+            Gets an enumerator that can iterate through this collection
+            </summary>
+            <returns>An object that implements the IEnumerator interface</returns>
+        </member>
+        <member name="M:OwlDotNetApi.OwlEdgeList.Add(OwlDotNetApi.IOwlEdge)">
+            <summary>
+            Adds an OwlEdge to this collection
+            </summary>
+            <param name="newEdge">The Edge to add.</param>
+            <exception cref="T:System.ArgumentNullException">newEdge is a null reference.</exception>
+        </member>
+        <member name="M:OwlDotNetApi.OwlEdgeList.Contains(OwlDotNetApi.IOwlEdge)">
+            <summary>
+            Determines whether an edge is present in this collection
+            </summary>
+            <param name="edge">The Edge to locate in the collection</param>
+            <returns>True if the Edge was found in the collection</returns>
+            <remarks>This method is a wrapper around the ArrayList.Contains(object) method and thus is O(<i>n</i>) operation.
+            Additionally ArrayList.Contains calls Object.equals to determine equality and so you cannot use this method to determine if an edge with the same edgeID is a member of this collection.</remarks>
+        </member>
+        <member name="M:OwlDotNetApi.OwlEdgeList.Remove(OwlDotNetApi.IOwlEdge)">
+            <summary>
+            Removes an edge object from the collection
+            </summary>
+            <param name="edge">The edge to remove</param>
+            <returns>True if the edge was successfully removed</returns>
+            <remarks>If the edge exists then it is removed by calling the ArrayList.Remove method which is an O(n) operation.</remarks>
+        </member>
+        <member name="M:OwlDotNetApi.OwlEdgeList.RemoveAll">
+            <summary>
+            Removes all the edges from this collection
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.OwlEdgeList.Item(System.Int32)">
+            <summary>
+            Gets or sets the edge at the specified index
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.OwlEdgeList.Count">
+            <summary>
+            Gets the number of edges stored in this collection
+            </summary>
+        </member>
+        <member name="T:OwlDotNetApi.OwlGenerator">
+            <summary>
+            Summary description for OwlGenerator.
+            </summary>
+        </member>
+        <member name="F:OwlDotNetApi.OwlGenerator._warnings">
+            <summary>
+            List of warning messages generated while generating the OWL/XML
+            </summary>
+        </member>
+        <member name="F:OwlDotNetApi.OwlGenerator._errors">
+            <summary>
+            List of error messages generated while generating the OWL/XML
+            </summary>
+        </member>
+        <member name="F:OwlDotNetApi.OwlGenerator._messages">
+            <summary>
+            List of information messages generated while generating the OWL/XML
+            (used for testing purposes
+            </summary>
+        </member>
+        <member name="F:OwlDotNetApi.OwlGenerator._stopOnErrors">
+            <summary>
+            Indicates whether the parser should throw an exception and stop when it encounters an error
+            </summary>
+        </member>
+        <member name="F:OwlDotNetApi.OwlGenerator._stopOnWarnings">
+            <summary>
+            Indicates whether the parser should throw an exception and stop when it generates a warnung
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.OwlGenerator.OnError(System.String)">
+            <summary>
+            Called by the generator when an error is encountered.
+            </summary>
+            <param name="msg">The error message associated with the error</param>
+            <exception cref="T:OwlDotNetApi.InvalidOwlException">ExceptionsOnError is set to true</exception>
+        </member>
+        <member name="M:OwlDotNetApi.OwlGenerator.OnError(System.Exception)">
+            <summary>
+            Called by the generator when an error is encountered.
+            </summary>
+            <param name="e">The exception to throw.</param>
+            <remarks>If ExceptionsOnError is set to true then the specified Exception is thrown. 
+            If ExceptionsOnError is set to false then the error message from the exception is output to standard output</remarks>
+        </member>
+        <member name="M:OwlDotNetApi.OwlGenerator.OnWarning(System.String)">
+            <summary>
+            Called by the generator when a warning is generated.
+            </summary>
+            <param name="msg">The message associated with the warning</param>
+            <exception cref="T:OwlDotNetApi.InvalidOwlException">ExceptionsOnWarnings is set to true</exception>
+        </member>
+        <member name="M:OwlDotNetApi.OwlGenerator.OnWarning(System.Exception)">
+            <summary>
+            Called by the generator when a warning is generated. 
+            </summary>
+            <param name="e">The exception to throw if ExceptionsOnWarnings is true</param>
+            <remarks>If ExceptionsOnWarnings is set to true then the specified exception is thrown.
+            If ExceptionsOnWarnings is set to false then the error message from the exception is output to standard output</remarks>
+        </member>
+        <member name="M:OwlDotNetApi.OwlGenerator.OnMessage(System.String)">
+            <summary>
+            To be called when particular testing information is to be written
+            to a log file
+            </summary>
+            <param name="msg">The log item</param>
+        </member>
+        <member name="M:OwlDotNetApi.OwlGenerator.IsValidUri(System.String)">
+            <summary>
+            Determines whether the specified URI string is a well formed URI
+            </summary>
+            <param name="uriString">A string</param>
+            <returns>True if the specified string is a well formed URI.</returns>
+        </member>
+        <member name="M:OwlDotNetApi.OwlGenerator.Visit(OwlDotNetApi.OwlNode,System.Object)">
+            <summary>
+            Implementation of the visit function to generate some output, used in the visitor pattern
+            </summary>
+            <param name="node">The actual node which needs to be generated</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="M:OwlDotNetApi.OwlGenerator.Visit(OwlDotNetApi.OwlEdge,System.Object)">
+            <summary>
+            Implementation of the visit function to generate some output, used in the visitor pattern
+            </summary>
+            <param name="edge">The actual edge which needs to be generated</param>
+            <param name="parent">The parent object of the edge</param>
+        </member>
+        <member name="M:OwlDotNetApi.OwlGenerator.Visit(OwlDotNetApi.OwlClass,System.Object)">
+            <summary>
+            Implementation of the visit function to generate some output, used in the visitor pattern
+            </summary>
+            <param name="node">The actual node which needs to be generated</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="M:OwlDotNetApi.OwlGenerator.Visit(OwlDotNetApi.OwlDataRange,System.Object)">
+            <summary>
+            Implementation of the visit function to generate some output, used in the visitor pattern
+            </summary>
+            <param name="node">The actual node which needs to be generated</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="M:OwlDotNetApi.OwlGenerator.Visit(OwlDotNetApi.OwlLiteral,System.Object)">
+            <summary>
+            Implementation of the visit function to generate some output, used in the visitor pattern
+            </summary>
+            <param name="node">The actual node which needs to be generated</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="M:OwlDotNetApi.OwlGenerator.Visit(OwlDotNetApi.OwlAnnotationProperty,System.Object)">
+            <summary>
+            Implementation of the visit function to generate some output, used in the visitor pattern
+            </summary>
+            <param name="node">The actual node which needs to be generated</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="M:OwlDotNetApi.OwlGenerator.Visit(OwlDotNetApi.OwlDatatype,System.Object)">
+            <summary>
+            Implementation of the visit function to generate some output, used in the visitor pattern
+            </summary>
+            <param name="node">The actual node which needs to be generated</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="M:OwlDotNetApi.OwlGenerator.Visit(OwlDotNetApi.OwlDatatypeProperty,System.Object)">
+            <summary>
+            Implementation of the visit function to generate some output, used in the visitor pattern
+            </summary>
+            <param name="node">The actual node which needs to be generated</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="M:OwlDotNetApi.OwlGenerator.Visit(OwlDotNetApi.OwlIndividual,System.Object)">
+            <summary>
+            Implementation of the visit function to generate some output, used in the visitor pattern
+            </summary>
+            <param name="node">The actual node which needs to be generated</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="M:OwlDotNetApi.OwlGenerator.Visit(OwlDotNetApi.OwlObjectProperty,System.Object)">
+            <summary>
+            Implementation of the visit function to generate some output, used in the visitor pattern
+            </summary>
+            <param name="node">The actual node which needs to be generated</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="M:OwlDotNetApi.OwlGenerator.Visit(OwlDotNetApi.OwlOntology,System.Object)">
+            <summary>
+            Implementation of the visit function to generate some output, used in the visitor pattern
+            </summary>
+            <param name="node">The actual node which needs to be generated</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="M:OwlDotNetApi.OwlGenerator.Visit(OwlDotNetApi.OwlOntologyProperty,System.Object)">
+            <summary>
+            Implementation of the visit function to generate some output, used in the visitor pattern
+            </summary>
+            <param name="node">The actual node which needs to be generated</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="M:OwlDotNetApi.OwlGenerator.Visit(OwlDotNetApi.OwlProperty,System.Object)">
+            <summary>
+            Implementation of the visit function to generate some output, used in the visitor pattern
+            </summary>
+            <param name="node">The actual node which needs to be generated</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="M:OwlDotNetApi.OwlGenerator.Visit(OwlDotNetApi.OwlRestriction,System.Object)">
+            <summary>
+            Implementation of the visit function to generate some output, used in the visitor pattern
+            </summary>
+            <param name="node">The actual node which needs to be generated</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="M:OwlDotNetApi.OwlGenerator.Visit(OwlDotNetApi.OwlResource,System.Object)">
+            <summary>
+            Implementation of the visit function to generate some output, used in the visitor pattern
+            </summary>
+            <param name="node">The actual node which needs to be generated</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="M:OwlDotNetApi.OwlGenerator.Visit(OwlDotNetApi.OwlCollection,System.Object)">
+            <summary>
+            Implementation of the visit function to generate some output, used in the visitor pattern
+            </summary>
+            <param name="node">The actual node which needs to be generated</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="P:OwlDotNetApi.OwlGenerator.Warnings">
+            <summary>
+            List of warning messages generated while generating the OWL/XML
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.OwlGenerator.Errors">
+            <summary>
+            List of error messages generated while generating the OWL/XML
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.OwlGenerator.Messages">
+            <summary>
+            List of information messages generated while generating the OWL/XML
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.OwlGenerator.StopOnErrors">
+            <summary>
+            Gets or sets a value that indicates whether the generator should throw an exception and stop when it encounters an error
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.OwlGenerator.StopOnWarnings">
+            <summary>
+            Gets or sets a value that indicates whether the generator should throw an exception and stop when it generates a warning
+            </summary>
+        </member>
+        <member name="T:OwlDotNetApi.OwlGraph">
+            <summary>
+            Represents an OWL Graph. 
+            </summary>
+            <remarks>This is an implementation of the IOwlGraph interface. This class maintain a collection of Nodes and a separate collection of Litrerals
+            in order to allow distinguishing between Nodes and Literals with the same value.</remarks>
+        </member>
+        <member name="F:OwlDotNetApi.OwlGraph._nameSpaces">
+            <summary>
+            The namespaces associated with this OWL Graph
+            </summary>
+        </member>
+        <member name="F:OwlDotNetApi.OwlGraph._edges">
+            <summary>
+            The collection of OwlEdges in this Graph
+            </summary>
+        </member>
+        <member name="F:OwlDotNetApi.OwlGraph._nodes">
+            <summary>
+            The collection of OwlNodes in this Graph
+            </summary>
+        </member>
+        <member name="F:OwlDotNetApi.OwlGraph._literals">
+            <summary>
+            The collection of literals in this OWL Graph
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.OwlGraph.#ctor">
+            <summary>
+            Initializes a new instance of the OwlGraph class.
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.OwlGraph.AddNode(System.String)">
+            <summary>
+            Adds a node to the Graph
+            </summary>
+            <param name="nodeUri">A string representing the URI of the new node.</param>
+            <exception cref="T:System.UriFormatException">The specified nodeUri is not a well formed URI.</exception>
+            <returns>An object that implements the IOwlNode interface. This is a reference to the new node added.
+            This method checks the graph to determine whether the node with the specified URI exists. 
+            If it does then a reference to the existing node is returned. If it does not exist then a new node is created, added 
+            to the graph and returned.</returns>
+        </member>
+        <member name="M:OwlDotNetApi.OwlGraph.AddNode(OwlDotNetApi.IOwlNode)">
+            <summary>
+            Adds a new node to the graph.
+            </summary>
+            <param name="node">An object that implements the IOwlNode interface. This is the new node to add.</param>
+            <exception cref="T:System.ArgumentException">A node with the same ID already exists in the Graph.</exception>
+        </member>
+        <member name="M:OwlDotNetApi.OwlGraph.AddEdge(OwlDotNetApi.IOwlEdge)">
+            <summary>
+            Adds an edge to the graph
+            </summary>
+            <param name="edge">An object that implements the IOwlEdge interface</param>
+            <exception cref="T:System.ArgumentNullException">The specified edge object is a null reference</exception>
+        </member>
+        <member name="M:OwlDotNetApi.OwlGraph.AddLiteral(System.String)">
+            <summary>
+            Adds a literal to the Graph
+            </summary>
+            <param name="literalValue">A string representing the value of the literal.</param>
+            <returns>An object that implements the IOwlLiteral interface. This is a reference to the newly added literal.</returns>
+            <remarks>This method looks in the graph to determine whether a literal with the specified value (and a null datatype and langID) exists
+            in the Graph. If the literal exists a reference to the existing literal is returned. If it does not exist then a new literal (with the specified value, and null datatype and LangID)
+            is created, added to the graph and returned.</remarks>
+        </member>
+        <member name="M:OwlDotNetApi.OwlGraph.AddLiteral(System.String,System.String,System.String)">
+            <summary>
+            Adds a literal to the Graph
+            </summary>
+            <param name="literalValue">A string representing the value of the literal.</param>
+            <param name="langID">A string representing the Language ID of the literal.</param>
+            <param name="datatypeUri">A string representing the datatype URI of the literal.</param>
+            <returns>An object that implements the IOwlLiteral interface. This is a reference to the newly added literal.</returns>
+            <exception cref="T:System.UriFormatException">The specified datatype URI is not null and is not a well formed URI.</exception>
+            <remarks>This method looks in the graph to determine whether a literal with the specified value, datatype and langID exists
+            in the Graph. If the literal exists a reference to the existing literal is returned. If it does not exist then a new literal with the specified value, datatype and LangID
+            is created, added to the graph and returned. Any parameter supplied to this method, except literalValue, can be null or empty and it will be ignored.</remarks>
+        </member>
+        <member name="M:OwlDotNetApi.OwlGraph.AddLiteral(OwlDotNetApi.IOwlLiteral)">
+            <summary>
+            Adds a literal to the graph
+            </summary>
+            <param name="literal">The new literal to add.</param>
+            <exception cref="T:System.ArgumentException">A literal with the same value, datatype URI and language ID alreday exists in the graph.</exception>
+        </member>
+        <member name="M:OwlDotNetApi.OwlGraph.Merge(OwlDotNetApi.IOwlGraph,System.Boolean)">
+            <summary>
+            Merges the srcGraph into this graph object
+            </summary>
+            <param name="srcGraph">An object that implements the IOwlGraph interace</param>
+            <param name="skipDuplicateEdges">A flag that indicates whether duplicate edges present in both graphs should be skipped during the merge process.</param>
+        </member>
+        <member name="P:OwlDotNetApi.OwlGraph.NameSpaces">
+            <summary>
+            Gets the namespaces associated with this OWL Graph
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.OwlGraph.Edges">
+            <summary>
+            Gets the collection of OwlEdges in this Graph
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.OwlGraph.Nodes">
+            <summary>
+            Gets the collection of OwlNodes in this Graph
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.OwlGraph.Literals">
+            <summary>
+            Gets the collection of literals in this OWL Graph
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.OwlGraph.Count">
+            <summary>
+            Gets the total number of nodes and literals in this OWL Graph
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.OwlGraph.Item(System.String)">
+            <summary>
+            Gets the node (or literal) with the specified URI
+            </summary>
+            <remarks>This method looks for a node that matches the specified URI and returns it. 
+            If the node is not found then the first literal matching this URI (value+langiuageID+datatype URI) is returned.
+            If neither a node or a literal matching this ID is found then null is returned.</remarks>
+        </member>
+        <member name="T:OwlDotNetApi.OwlIndividual">
+            <summary>
+            Represents an OWL resource of type owl:Individual.
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.OwlIndividual.#ctor">
+            <summary>
+            Initializes a new instance of the OwlClass class
+            </summary>
+            <remarks>This constructor creates a new OwlNode with Uri owl:Thing and sets it as the child node of an edge with URI rdf:type</remarks>	
+        </member>
+        <member name="M:OwlDotNetApi.OwlIndividual.#ctor(System.String,OwlDotNetApi.OwlNode)">
+            <summary>
+            Initializes a new instance of the OwlClass class with the given Uri and TypeNode
+            </summary>
+            <param name="nodeUri">A string representing the Uri of this Resource</param>
+            <param name="typeNode">The OwlNode object to attach to the edge specifying the type. This is usually a node with ID owl:Class.</param>
+            <exception cref="T:System.ArgumentNullException">typeNode is a null reference</exception>
+        </member>
+        <member name="M:OwlDotNetApi.OwlIndividual.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the OwlClass class with the given Uri
+            </summary>
+            <param name="nodeUri">A string representing the URI of this Resource</param>
+            <remarks>This constructor creates a new OwlNode with URI owl:Thing and sets it as the child node of an edge with URI rdf:type</remarks>	
+        </member>
+        <member name="M:OwlDotNetApi.OwlIndividual.Accept(OwlDotNetApi.IOwlVisitor,System.Object)">
+            <summary>
+            This is the accept method in the visitor pattern used for performing an action on the node.
+            </summary>
+            <param name="visitor">The visitor object itself</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="T:OwlDotNetApi.OwlLiteral">
+            <summary>
+            Represents a Literal in the OWL Graph.
+            </summary>
+            <remarks>A literal is uniquely identified by its value, LanguageID and Datatype URI. 
+            The ID of a Literal is composed of a concatenated string of these three value. If the Datatype and Language ID are 
+            not specified then they are assumed to be null (default for the locale or data) and the ID is set to the value.</remarks>
+        </member>
+        <member name="F:OwlDotNetApi.OwlLiteral._dataType">
+            <summary>
+            The Datatype URI of this Literal
+            </summary>
+        </member>
+        <member name="F:OwlDotNetApi.OwlLiteral._literalValue">
+            <summary>
+            The value for this literal.
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.OwlLiteral.#ctor">
+            <summary>
+            Initializes a new instance of the OwlLiteral class.
+            </summary>
+            <remarks>Sets the Datatype URI to null and the Value and the Language ID to empty strings.</remarks>
+        </member>
+        <member name="M:OwlDotNetApi.OwlLiteral.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the OwlLiteral class.
+            </summary>
+            <param name="literalValue">A string representing the value of this Literal.</param>
+            <remarks>Sets the Datatype URI to null and the Labguage ID to an empty string.</remarks>
+        </member>
+        <member name="M:OwlDotNetApi.OwlLiteral.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance if the OwlLiteral class.
+            </summary>
+            <param name="literalValue">A string representing the value of this literal.</param>
+            <param name="languageID">A string representing the Language ID of this literal.</param>
+            <param name="datatypeUri">A string representing the Datatype URI of this Literal.</param>
+            <exception cref="T:System.UriFormatException">The specified datatypeUri is not null and is not a well formed URI.</exception>
+        </member>
+        <member name="M:OwlDotNetApi.OwlLiteral.ToString">
+            <summary>
+            Gets the string representation of this literal
+            </summary>
+            <returns>A string containg this literal</returns>
+        </member>
+        <member name="M:OwlDotNetApi.OwlLiteral.Accept(OwlDotNetApi.IOwlVisitor,System.Object)">
+            <summary>
+            This is the accept method in the visitor pattern used for performing an action on the node.
+            </summary>
+            <param name="visitor">The visitor object itself</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="P:OwlDotNetApi.OwlLiteral.Datatype">
+            <summary>
+            Gets or sets the Datatype URI of this Literal
+            </summary>
+            <exception cref="T:System.UriFormatException">Attempt to set the Datatype to a URI string that is not a well formed URI.</exception>
+        </member>
+        <member name="P:OwlDotNetApi.OwlLiteral.Value">
+            <summary>
+            Gets or sets the value of this Literal.
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.OwlLiteral.ID">
+            <summary>
+            Gets the ID of this literal
+            </summary>
+            <exception cref="T:System.ArgumentException">Attempt to set the ID of this literal.</exception>
+            <remarks>This is a string composed of the Value, LanguageID and the Datatype URI.
+            You cannot use this property to set the ID of a literal.</remarks>
+        </member>
+        <member name="T:OwlDotNetApi.OwlNamespaceCollection">
+            <summary>
+            Represents a collection of Namespaces
+            </summary>
+        </member>
+        <member name="F:OwlDotNetApi.OwlNamespaceCollection.OwlNamespace">
+            <summary>
+            The OWL Namespace.
+            </summary>
+        </member>
+        <member name="F:OwlDotNetApi.OwlNamespaceCollection.OwlNamespacePrefix">
+            <summary>
+            The standard prefix of the OWL namespace.
+            </summary>
+        </member>
+        <member name="F:OwlDotNetApi.OwlNamespaceCollection.RdfNamespace">
+            <summary>
+            The RDF Namespace.
+            </summary>
+        </member>
+        <member name="F:OwlDotNetApi.OwlNamespaceCollection.RdfNamespacePrefix">
+            <summary>
+            The standard prefix of the RDF namespace.
+            </summary>
+        </member>
+        <member name="F:OwlDotNetApi.OwlNamespaceCollection.RdfSchemaNamespace">
+            <summary>
+            The RDF Schema Namespace.
+            </summary>
+        </member>
+        <member name="F:OwlDotNetApi.OwlNamespaceCollection.RdfSchemaNamespacePrefix">
+            <summary>
+            The standard prefix of the RDF Schema Namespace.
+            </summary>
+        </member>
+        <member name="F:OwlDotNetApi.OwlNamespaceCollection.XmlSchemaNamespace">
+            <summary>
+            The XML Schema namespace.
+            </summary>
+        </member>
+        <member name="F:OwlDotNetApi.OwlNamespaceCollection.XmlSchemaNamespacePrefix">
+            <summary>
+            The standard prefix of the XML Schema namespace.
+            </summary>
+        </member>
+        <member name="F:OwlDotNetApi.OwlNamespaceCollection._nameSpaces">
+            <summary>
+            The collection of namespaces
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.OwlNamespaceCollection.#ctor">
+            <summary>
+            Initializes a new instance of the OwlNamespaceCollection class.
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.OwlNamespaceCollection.GetEnumerator">
+            <summary>
+            Gets an enumerator that can iterate through this collection.
+            </summary>
+            <returns>An object that implements that implements the <see cref="T:System.Collections.IEnumerator"/> interface.</returns>
+        </member>
+        <member name="M:OwlDotNetApi.OwlNamespaceCollection.Remove(System.String)">
+            <summary>
+            Removes a namespace from the namespace collection
+            </summary>
+            <param name="name">The name of the namespace to remove</param>
+            <exception cref="T:System.ArgumentNullException">The specified name is a null reference.</exception>
+            <remarks>Removes the name from the collection.</remarks>
+        </member>
+        <member name="M:OwlDotNetApi.OwlNamespaceCollection.RemoveAll">
+            <summary>
+            Removes all the namespaces from this collection
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.OwlNamespaceCollection.Item(System.String)">
+            <summary>
+            Gets or sets the Namespace with the specified name
+            </summary>
+            <exception cref="T:System.ArgumentException">Attempt to set a namespace with an empty name.</exception>
+            <exception cref="T:System.ArgumentNullException">Attempt to store a null namespace.</exception>
+            <exception cref="T:System.ArgumentNullException">Attempt to set a namespace with a null name.</exception>
+            <remarks>The name of the namspace is a string consisting of the namespace prefix prefaced with xmlns:. 
+            The one exception is xml:base where the value of the base URI of the OWL document is stored under the
+            name xml:base.</remarks>
+        </member>
+        <member name="P:OwlDotNetApi.OwlNamespaceCollection.Count">
+            <summary>
+            Gets the total number of namespaces in this collection.
+            </summary>
+        </member>
+        <member name="T:OwlDotNetApi.OwlNodeCollection">
+            <summary>
+            Represents a collection of OWL Nodes
+            </summary>
+        </member>
+        <member name="F:OwlDotNetApi.OwlNodeCollection._nodes">
+            <summary>
+            The collection of OwlNode objects
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.OwlNodeCollection.#ctor">
+            <summary>
+            Initializes a new instance of the OwlNodeCollection class.
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.OwlNodeCollection.GetEnumerator">
+            <summary>
+            Gets an enumerator that can iterate through this collection.
+            </summary>
+            <returns>An object that implements that implements the <see cref="T:System.Collections.IEnumerator"/> interface.</returns>
+        </member>
+        <member name="M:OwlDotNetApi.OwlNodeCollection.Add(System.String,OwlDotNetApi.IOwlNode)">
+            <summary>
+            Adds a node to the collection.
+            </summary>
+            <param name="nodeID">The ID of the node to add.</param>
+            <param name="newNode">An object that implements the IOwlNode interface. This is a reference to the node to add.</param>
+            <exception cref="T:System.ArgumentException">A node with the specified ID already exists in the collection.</exception>
+            <exception cref="T:System.ArgumentNullException">The specified ID is a null reference.</exception>
+        </member>
+        <member name="M:OwlDotNetApi.OwlNodeCollection.Add(OwlDotNetApi.IOwlNode)">
+            <summary>
+            Adds a node to the collection.
+            </summary>
+            <param name="newNode">An object that implements the IOwlNode interface. This is a reference to the node to add.</param>
+            <exception cref="T:System.ArgumentException">A node with the same ID already exists in the collection.</exception>
+            <exception cref="T:System.ArgumentNullException">The ID of the specified node is a null Reference.</exception>
+        </member>
+        <member name="M:OwlDotNetApi.OwlNodeCollection.Remove(OwlDotNetApi.IOwlNode)">
+            <summary>
+            Removes a node from this collection.
+            </summary>
+            <param name="node">An object that implements the IOwlNode interface. This is the node to remove.</param>
+            <returns>True if a node with the same ID was found and removed.</returns>
+            <exception cref="T:System.ArgumentException">node is a null reference.</exception>
+            <remarks>This method removes the node with the same ID as the specified node.</remarks>
+        </member>
+        <member name="M:OwlDotNetApi.OwlNodeCollection.RemoveAll">
+            <summary>
+            Removes all the nodes from this collection
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.OwlNodeCollection.Contains(OwlDotNetApi.IOwlNode)">
+            <summary>
+            Determines whether the specified node is a member of this collection.
+            </summary>
+            <param name="node">An object that implements the IOwlNode interface.</param>
+            <returns>True if a node with the same ID was found in the collection.</returns>
+        </member>
+        <member name="P:OwlDotNetApi.OwlNodeCollection.Item(System.String)">
+            <summary>
+            Gets or sets the Node with the specified ID
+            </summary>
+            <exception cref="T:System.ArgumentNullException">nodeID is a null reference.</exception>
+        </member>
+        <member name="P:OwlDotNetApi.OwlNodeCollection.Count">
+            <summary>
+            Gets the total number of nodes in this collection.
+            </summary>
+        </member>
+        <member name="T:OwlDotNetApi.OwlObjectProperty">
+            <summary>
+            Represents an OWL resource of type owl:ObjectProperty.
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.OwlObjectProperty.#ctor">
+            <summary>
+            Initializes a new instance of the OwlObjectProperty class
+            </summary>
+            <remarks>This constructor creates a new OwlNode with Uri owl:ObjectProperty and sets it as the child node of an edge with URI rdf:type</remarks>	
+        </member>
+        <member name="M:OwlDotNetApi.OwlObjectProperty.#ctor(System.String,OwlDotNetApi.OwlNode)">
+            <summary>
+            Initializes a new instance of the OwlObjectProperty class with the given Uri and TypeNode
+            </summary>
+            <param name="nodeUri">A string representing the Uri of this Resource</param>
+            <param name="typeNode">The OwlNode object to attach to the edge specifying the type. This is usually a node with ID owl:ObjectProperty.</param>
+            <exception cref="T:System.ArgumentNullException">typeNode is a null reference</exception>
+        </member>
+        <member name="M:OwlDotNetApi.OwlObjectProperty.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the OwlObjectProperty class with the given Uri
+            </summary>
+            <param name="nodeUri">A string representing the URI of this Resource</param>
+            <remarks>This constructor creates a new OwlNode with URI owl:ObjectProperty and sets it as the child node of an edge with URI rdf:type</remarks>	
+        </member>
+        <member name="M:OwlDotNetApi.OwlObjectProperty.Accept(OwlDotNetApi.IOwlVisitor,System.Object)">
+            <summary>
+            This is the accept method in the visitor pattern used for performing an action on the node.
+            </summary>
+            <param name="visitor">The visitor object itself</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="T:OwlDotNetApi.OwlOntology">
+            <summary>
+            Represents an OWL resource of type owl:Ontology.
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.OwlOntology.#ctor">
+            <summary>
+            Initializes a new instance of the OwlOntology class
+            </summary>
+            <remarks>This constructor creates a new RdfNode with Uri owl:Ontology and sets it as the child node of an edge with URI rdf:type</remarks>	
+        </member>
+        <member name="M:OwlDotNetApi.OwlOntology.#ctor(System.String,OwlDotNetApi.OwlNode)">
+            <summary>
+            Initializes a new instance of the OwlOntology class with the given Uri and TypeNode
+            </summary>
+            <param name="nodeUri">A string representing the Uri of this Resource</param>
+            <param name="typeNode">The OwlNode object to attach to the edge specifying the type. This is usually a node with ID owl:Ontology.</param>
+            <exception cref="T:System.ArgumentNullException">typeNode is a null reference</exception>
+        </member>
+        <member name="M:OwlDotNetApi.OwlOntology.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the OwlOntology class with the given Uri
+            </summary>
+            <param name="nodeUri">A string representing the URI of this Resource</param>
+            <remarks>This constructor creates a new OwlNode with URI owl:Ontology and sets it as the child node of an edge with URI rdf:type</remarks>	
+        </member>
+        <member name="M:OwlDotNetApi.OwlOntology.Accept(OwlDotNetApi.IOwlVisitor,System.Object)">
+            <summary>
+            This is the accept method in the visitor pattern used for performing an action on the node.
+            </summary>
+            <param name="visitor">The visitor object itself</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="T:OwlDotNetApi.OwlOntologyProperty">
+            <summary>
+            Represents an OWL resource of type owl:OntologyProperty.
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.OwlOntologyProperty.#ctor">
+            <summary>
+            Initializes a new instance of the OwlOntologyProperty class
+            </summary>
+            <remarks>This constructor creates a new OwlNode with Uri owl:OntologyProperty and sets it as the child node of an edge with URI rdf:type</remarks>	
+        </member>
+        <member name="M:OwlDotNetApi.OwlOntologyProperty.#ctor(System.String,OwlDotNetApi.OwlNode)">
+            <summary>
+            Initializes a new instance of the OwlOntologyProperty class with the given Uri and TypeNode
+            </summary>
+            <param name="nodeUri">A string representing the Uri of this Property</param>
+            <param name="typeNode">The OwlNode object to attach to the edge specifying the type. This is usually a node with ID owl:OntologyProperty.</param>
+            <exception cref="T:System.ArgumentNullException">typeNode is a null reference</exception>
+        </member>
+        <member name="M:OwlDotNetApi.OwlOntologyProperty.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the OwlOntologyProperty class with the given Uri
+            </summary>
+            <param name="nodeUri">A string representing the URI of this Property</param>
+            <remarks>This constructor creates a new OwlNode with URI owl:OntologyProperty and sets it as the child node of an edge with URI rdf:type</remarks>	
+        </member>
+        <member name="M:OwlDotNetApi.OwlOntologyProperty.Accept(OwlDotNetApi.IOwlVisitor,System.Object)">
+            <summary>
+            This is the accept method in the visitor pattern used for performing an action on the node.
+            </summary>
+            <param name="visitor">The visitor object itself</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="T:OwlDotNetApi.OwlParser">
+            <summary>
+            Summary description for OwlParser.
+            </summary>
+        </member>
+        <member name="F:OwlDotNetApi.OwlParser._owlGraph">
+            <summary>
+            The OWL Graph object
+            </summary>
+        </member>
+        <member name="F:OwlDotNetApi.OwlParser._warnings">
+            <summary>
+            List of warning messages generated while parsing the OWL/XML
+            </summary>
+        </member>
+        <member name="F:OwlDotNetApi.OwlParser._errors">
+            <summary>
+            List of error messages generated while parsing the OWL/XML
+            </summary>
+        </member>
+        <member name="F:OwlDotNetApi.OwlParser._messages">
+            <summary>
+            List of information messages generated while parsing the OWL/XML
+            (used for testing purposes
+            </summary>
+        </member>
+        <member name="F:OwlDotNetApi.OwlParser._stopOnErrors">
+            <summary>
+            Indicates whether the parser should throw an exception and stop when it encounters an error
+            </summary>
+        </member>
+        <member name="F:OwlDotNetApi.OwlParser._stopOnWarnings">
+            <summary>
+            Indicates whether the parser should throw an exception and stop when it generates a warnung
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.OwlParser.OnError(System.String)">
+            <summary>
+            Called by the parser when an error is encountered.
+            </summary>
+            <param name="msg">The error message associated with the error</param>
+            <exception cref="T:OwlDotNetApi.InvalidOwlException">ExceptionsOnError is set to true</exception>
+        </member>
+        <member name="M:OwlDotNetApi.OwlParser.OnError(System.Exception)">
+            <summary>
+            Called by the parser when an error is encountered.
+            </summary>
+            <param name="e">The exception to throw.</param>
+            <remarks>If ExceptionsOnError is set to true then the specified Exception is thrown. 
+            If ExceptionsOnError is set to false then the error message from the exception is output to standard output</remarks>
+        </member>
+        <member name="M:OwlDotNetApi.OwlParser.OnWarning(System.String)">
+            <summary>
+            Called by the parser when a warning is generated.
+            </summary>
+            <param name="msg">The message associated with the warning</param>
+            <exception cref="T:OwlDotNetApi.InvalidOwlException">ExceptionsOnWarnings is set to true</exception>
+        </member>
+        <member name="M:OwlDotNetApi.OwlParser.OnWarning(System.Exception)">
+            <summary>
+            Called by the parser when a warning is generated. 
+            </summary>
+            <param name="e">The exception to throw if ExceptionsOnWarnings is true</param>
+            <remarks>If ExceptionsOnWarnings is set to true then the specified exception is thrown.
+            If ExceptionsOnWarnings is set to false then the error message from the exception is output to standard output</remarks>
+        </member>
+        <member name="M:OwlDotNetApi.OwlParser.OnMessage(System.String)">
+            <summary>
+            To be called when particular testing information is to be written
+            to a log file
+            </summary>
+            <param name="msg">The log item</param>
+        </member>
+        <member name="M:OwlDotNetApi.OwlParser.IsValidUri(System.String)">
+            <summary>
+            Determines whether the specified URI string is a well formed URI
+            </summary>
+            <param name="uriString">A string</param>
+            <returns>True if the specified string is a well formed URI.</returns>
+        </member>
+        <member name="P:OwlDotNetApi.OwlParser.Warnings">
+            <summary>
+            List of warning messages generated while parsing the OWL/XML
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.OwlParser.Errors">
+            <summary>
+            List of error messages generated while parsing the OWL/XML
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.OwlParser.Messages">
+            <summary>
+            List of information messages generated while parsing the OWL/XML
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.OwlParser.StopOnErrors">
+            <summary>
+            Gets or sets a value that indicates whether the parser should throw an exception and stop when it encounters an error
+            </summary>
+        </member>
+        <member name="P:OwlDotNetApi.OwlParser.StopOnWarnings">
+            <summary>
+            Gets or sets a value that indicates whether the parser should throw an exception and stop when it generates a warning
+            </summary>
+        </member>
+        <member name="T:OwlDotNetApi.OwlRestriction">
+            <summary>
+            Represents an OWL resource of type owl:Restriction.
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.OwlRestriction.#ctor">
+            <summary>
+            Initializes a new instance of the OwlRestriction class
+            </summary>
+            <remarks>This constructor creates a new OwlNode with Uri owl:Restriction and sets it as the child node of an edge with URI rdf:type</remarks>	
+        </member>
+        <member name="M:OwlDotNetApi.OwlRestriction.#ctor(System.String,OwlDotNetApi.OwlNode)">
+            <summary>
+            Initializes a new instance of the OwlRestriction class with the given Uri and TypeNode
+            </summary>
+            <param name="nodeUri">A string representing the Uri of this Resource</param>
+            <param name="typeNode">The OwlNode object to attach to the edge specifying the type. This is usually a node with ID owl:Restriction.</param>
+            <exception cref="T:System.ArgumentNullException">typeNode is a null reference</exception>
+        </member>
+        <member name="M:OwlDotNetApi.OwlRestriction.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the OwlRestriction class with the given Uri
+            </summary>
+            <param name="nodeUri">A string representing the URI of this Resource</param>
+            <remarks>This constructor creates a new OwlNode with URI owl:Restriction and sets it as the child node of an edge with URI rdf:type</remarks>	
+        </member>
+        <member name="M:OwlDotNetApi.OwlRestriction.Accept(OwlDotNetApi.IOwlVisitor,System.Object)">
+            <summary>
+            This is the accept method in the visitor pattern used for performing an action on the node.
+            </summary>
+            <param name="visitor">The visitor object itself</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="T:OwlDotNetApi.OwlXmlGenerator">
+            <summary>
+            Summary description for OwlXmlGenerator.
+            </summary>
+        </member>
+        <member name="F:OwlDotNetApi.OwlXmlGenerator._owlDocument">
+            <summary>
+            The OWL Xml Document object
+            </summary>
+        </member>
+        <member name="F:OwlDotNetApi.OwlXmlGenerator._baseUri">
+            <summary>
+            The base URI of the ontology the be generated
+            </summary>
+        </member>
+        <member name="F:OwlDotNetApi.OwlXmlGenerator._namespaces">
+            <summary>
+            This is the reversed collection of namespaces with as key the URI
+            of the namespace and as value the prefix;
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlGenerator.#ctor">
+            <summary>
+            Initializes an instance of the generator.
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlGenerator.GenerateOwl(OwlDotNetApi.IOwlGraph,System.String)">
+            <summary>
+            Generate the OWL graph into a file represented by the uri
+            </summary>
+            <param name="graph">The graph which needs to be generated</param>
+            <param name="filename">The name of the file to which the graph needs to be generated</param>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlGenerator.GenerateOwl(OwlDotNetApi.IOwlGraph,System.Uri)">
+            <summary>
+            Generate the OWL graph into a file represented by the object of type Uri
+            </summary>
+            <param name="graph">The graph which needs to be generated</param>
+            <param name="uri">The Uri object representing the file to which the graph needs to be generated</param>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlGenerator.GenerateOwl(OwlDotNetApi.IOwlGraph,System.Xml.XmlDocument)">
+            <summary>
+            Generates the OWL graph into an XmlDocument object
+            </summary>
+            <param name="graph">The graph which needs to be generated</param>
+            <param name="doc">The XmlDocument object used as a destination for the graph</param>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlGenerator.Visit(OwlDotNetApi.OwlNode,System.Object)">
+            <summary>
+            The general implementation of a regular OwlNode. A node is only of type OwlNode in some special cases.
+            </summary>
+            <param name="node">The actual node to visit</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlGenerator.Visit(OwlDotNetApi.OwlEdge,System.Object)">
+            <summary>
+            Implementation of an OwlEdge.
+            </summary>
+            <param name="edge">The actual edge to be visited</param>
+            <param name="parent">The parent object (node) of the edge</param>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlGenerator.Visit(OwlDotNetApi.OwlClass,System.Object)">
+            <summary>
+            Implementation of the visit function to generate some output, used in the visitor pattern
+            </summary>
+            <param name="node">The actual node which needs to be generated</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlGenerator.Visit(OwlDotNetApi.OwlLiteral,System.Object)">
+            <summary>
+            Implementation of the visit function to generate some output, used in the visitor pattern
+            </summary>
+            <param name="node">The actual node which needs to be generated</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlGenerator.Visit(OwlDotNetApi.OwlAnnotationProperty,System.Object)">
+            <summary>
+            Implementation of the visit function to generate some output, used in the visitor pattern
+            </summary>
+            <param name="node">The actual node which needs to be generated</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlGenerator.Visit(OwlDotNetApi.OwlDatatype,System.Object)">
+            <summary>
+            Implementation of the visit function to generate some output, used in the visitor pattern
+            </summary>
+            <param name="node">The actual node which needs to be generated</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlGenerator.Visit(OwlDotNetApi.OwlDataRange,System.Object)">
+            <summary>
+            Implementation of the visit function to generate some output, used in the visitor pattern
+            </summary>
+            <param name="node">The actual node which needs to be generated</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlGenerator.Visit(OwlDotNetApi.OwlDatatypeProperty,System.Object)">
+            <summary>
+            Implementation of the visit function to generate some output, used in the visitor pattern
+            </summary>
+            <param name="node">The actual node which needs to be generated</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlGenerator.Visit(OwlDotNetApi.OwlIndividual,System.Object)">
+            <summary>
+            Implementation of the visit function to generate some output, used in the visitor pattern
+            </summary>
+            <param name="node">The actual node which needs to be generated</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlGenerator.Visit(OwlDotNetApi.OwlObjectProperty,System.Object)">
+            <summary>
+            Implementation of the visit function to generate some output, used in the visitor pattern
+            </summary>
+            <param name="node">The actual node which needs to be generated</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlGenerator.Visit(OwlDotNetApi.OwlOntology,System.Object)">
+            <summary>
+            Implementation of the visit function to generate some output, used in the visitor pattern
+            </summary>
+            <param name="node">The actual node which needs to be generated</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlGenerator.Visit(OwlDotNetApi.OwlOntologyProperty,System.Object)">
+            <summary>
+            Implementation of the visit function to generate some output, used in the visitor pattern
+            </summary>
+            <param name="node">The actual node which needs to be generated</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlGenerator.Visit(OwlDotNetApi.OwlProperty,System.Object)">
+            <summary>
+            Implementation of the visit function to generate some output, used in the visitor pattern
+            </summary>
+            <param name="node">The actual node which needs to be generated</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlGenerator.Visit(OwlDotNetApi.OwlRestriction,System.Object)">
+            <summary>
+            Implementation of the visit function to generate some output, used in the visitor pattern
+            </summary>
+            <param name="node">The actual node which needs to be generated</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlGenerator.Visit(OwlDotNetApi.OwlResource,System.Object)">
+            <summary>
+            Implementation of the visit function to generate some output, used in the visitor pattern
+            </summary>
+            <param name="node">The actual node which needs to be generated</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlGenerator.Visit(OwlDotNetApi.OwlCollection,System.Object)">
+            <summary>
+            Implementation of the visit function to generate some output, used in the visitor pattern
+            </summary>
+            <param name="node">The actual node which needs to be generated</param>
+            <param name="parent">The parent object of the node</param>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlGenerator.VisitEdges(OwlDotNetApi.OwlNode,System.Object)">
+            <summary>
+            Visit all the outgoing edges of the node and add them to the parent
+            </summary>
+            <param name="node">The actual node of which we need to visit the edges</param>
+            <param name="parent">The xml representative of the node</param>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlGenerator.GetNodeID(OwlDotNetApi.OwlNode)">
+            <summary>
+            This method extracts the localName of the node
+            </summary>
+            <param name="node">The node from which we want to retrieve the local ID</param>
+            <returns>The local name of the node if it has one, or the full uri otherwise</returns>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlGenerator.GetNodeReference(OwlDotNetApi.OwlNode)">
+            <summary>
+            This method extracts the reference of the node.
+            </summary>
+            <param name="node">The node from which we want to retrieve the reference</param>
+            <returns>The reference of the node if it has a short reference, or the full uri otherwise</returns>
+        </member>
+        <member name="T:OwlDotNetApi.OwlXmlParser">
+            <summary>
+            The primary OWL Parser.
+            </summary>
+        </member>
+        <member name="F:OwlDotNetApi.OwlXmlParser._declID">
+            <summary>
+            A Hashtable that stores declared rdf:ID values for quick lookup of duplicates
+            </summary>
+        </member>
+        <member name="F:OwlDotNetApi.OwlXmlParser._newID">
+            <summary>
+            Variable used to generate new IDs for OWL Nodes
+            </summary>
+        </member>
+        <member name="F:OwlDotNetApi.OwlXmlParser._nonSyntacticElements">
+            <summary>
+            A Collection of non syntactic elements in the OWL syntax
+            </summary>
+        </member>
+        <member name="F:OwlDotNetApi.OwlXmlParser._syntacticElements">
+            <summary>
+            A Collection of syntactic elements in the OWL syntax
+            </summary>
+        </member>
+        <member name="F:OwlDotNetApi.OwlXmlParser._rdfXmlProperties">
+            <summary>
+            A Collection of all RDF and XML properties
+            </summary>
+            <remarks>The members of this collection are rdf:about, rdf:resource, rdf:parseType, rdf:ID, rdf:nodeID, rdf:datatype, rdf:value, xml:lang, xml:base</remarks>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlParser.#ctor">
+            <summary>
+            Initializes an instance of the RdfParser class
+            </summary>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlParser.ParseOwl(System.Xml.XmlDocument,OwlDotNetApi.IOwlGraph,System.String)">
+            <summary>
+            Parses the OWL from the given XmlDocument, into an existing graph using the given xml:base uri
+            </summary>
+            <param name="doc">The XmlDocument to use as the source of the XML data</param>
+            <param name="graph">An object that implements the IOwlGraph interface</param>
+            <param name="xmlbaseUri">The xml:base Uri to use incase one is not found in the XML data or the graph</param>
+            <returns>An object that implements the IOwlGraph interface</returns>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlParser.ParseOwl(System.Xml.XmlDocument,OwlDotNetApi.IOwlGraph)">
+            <summary>
+            Parses the OWL from the given XmlDocument, into an existing graph
+            </summary>
+            <param name="doc">The XmlDocument to use as the source of the XML data</param>
+            <param name="graph">An object that implements the IOwlGraph interface</param>
+            <returns>An object that implements the IOwlGraph interface</returns>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlParser.ParseOwl(System.Xml.XmlDocument,System.String)">
+            <summary>
+            Parses the OWL from the given XmlDocument, using the given xml:base uri
+            </summary>
+            <param name="doc">The XmlDocument to use as the source of the XML data</param>
+            <param name="xmlbaseUri">The xml:base Uri to use incase one is not found in the XML data</param>
+            <returns>An object that implements the IOwlGraph interface</returns>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlParser.ParseOwl(System.Xml.XmlDocument)">
+            <summary>
+            Parses the OWL from the given XmlDocument
+            </summary>
+            <param name="doc">The XmlDocument to use as the source of the XML data</param>
+            <returns>An object that implements the IOwlGraph interface</returns>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlParser.ParseOwl(System.IO.Stream,OwlDotNetApi.IOwlGraph,System.String)">
+            <summary>
+            Parses the OWL from the given stream, into an existing graph using the given xml:base uri
+            </summary>
+            <param name="inStream">The Stream to use as the source of the XML data</param>
+            <param name="graph">An object that implements the IOwlGraph interface</param>
+            <param name="xmlbaseUri">The xml:base Uri to use incase one is not found in the XML data or the graph</param>
+            <returns>An object that implements the IOwlGraph interface</returns>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlParser.ParseOwl(System.IO.Stream,System.String)">
+            <summary>
+            Parses the OWL from the given stream, using the given xml:base uri
+            </summary>
+            <param name="inStream">The Stream to use as the source of the XML data</param>
+            <param name="xmlbaseUri">The xml:base Uri to use incase one is not found in the XML data</param>
+            <returns>An object that implements the IOwlGraph interface</returns>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlParser.ParseOwl(System.IO.Stream,OwlDotNetApi.IOwlGraph)">
+            <summary>
+            Parses the OWL from a stream into an existing Graph
+            </summary>
+            <param name="inStream">The input stream for data</param>
+            <param name="graph">An object that implements the IOwlGraph interface that will be used as the destination graph</param>
+            <returns>An object that implements the IOwlGraph interface</returns>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlParser.ParseOwl(System.IO.Stream)">
+            <summary>
+            Parses the OWL from a stream
+            </summary>
+            <param name="inStream">The input stream for data</param>
+            <returns>An object that implements the IOwlGraph interface</returns>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlParser.ParseOwl(System.Uri,OwlDotNetApi.IOwlGraph)">
+            <summary>
+            Parses the OWL at the given URI, into an existing graph
+            </summary>
+            <param name="uri">The Uri of the document to parse</param>
+            <param name="graph">An object that implements the IOwlGraph interface that will be used as the destination graph</param>
+            <returns>An object that implements the IOwlGraph interface</returns>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlParser.ParseOwl(System.Uri)">
+            <summary>
+            Parses the OWL at the given URI
+            </summary>
+            <param name="uri">The Uri of the document to parse</param>
+            <returns>An object that implements the IOwlGraph interface</returns>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlParser.ParseOwl(System.String,OwlDotNetApi.IOwlGraph)">
+            <summary>
+            Parses the OWL at the given URI, into an existing graph
+            </summary>
+            <param name="uri">The Uri of the document to parse</param>
+            <param name="graph">An object that implements the IOwlGraph interface that will be used as the destination graph</param>
+            <returns>An object that implements the IOwlGraph interface</returns>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlParser.ParseOwl(System.String)">
+            <summary>
+            Builds an OwlGraph from an RDF/XML serialization
+            </summary>
+            <param name="uri">The URI of the OWL document to parse</param>
+            <returns>An object that implements the IOwlGraph interface</returns>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlParser.ProcessNode(System.Xml.XmlNode,System.Object)">
+            <summary>
+            Processes a node in the XML document. 
+            </summary>
+            <param name="node">The XmlNode to process.</param>
+            <param name="parent">The parent of the current node.</param>
+            <returns>Returns a reference to the new node created</returns>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlParser.ParseNodeAttributes(System.Xml.XmlNode,OwlDotNetApi.OwlNode)">
+            <summary>
+            Parses the rdf:value, rdf:type attributes as well as any attributes not part of the OWL, RDF or XML namespace
+            </summary>
+            <param name="node">The XmlNode on which the attributes appear</param>
+            <param name="rNode">The OwlNode to which the attributes must be applied</param>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlParser.ParseNodeRdfAttributes(System.Xml.XmlNode)">
+            <summary>
+            Parses the OWL attributes rdf:about and rdf:ID
+            </summary>
+            <param name="node">The XmlNode on which the attributes appear</param>
+            <returns>A Uri string with the ID specified by the attributes. Null if none of the three attributes are found</returns>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlParser.ParseNodeSyntax(System.Xml.XmlNode,System.String)">
+            <summary>
+            Process the OWL Syntax on a node
+            </summary>
+            <param name="node">The XmlNode representing the OWL Node</param>
+            <param name="nodeID">The ID to be assigned to the OWL node</param>
+            <returns>The newly created OWL node or null if there are no OWL elements on this XmlNode</returns>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlParser.AddClassToGraph(System.String)">
+            <summary>
+            Adds an OWL Resource of type owl:Class to the graph</summary>
+            <param name="nodeUri">The Uri of the resource.</param>
+            <returns>Returns a reference to the newly added resource.</returns>
+            <exception cref="T:System.UriFormatException">The specified nodeUri is not a well formed Uri.</exception>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlParser.AddRestrictionToGraph(System.String)">
+            <summary>
+            Adds an OWL Resource of type owl:Restriction to the graph</summary>
+            <param name="nodeUri">The Uri of the resource.</param>
+            <returns>Returns a reference to the newly added resource.</returns>
+            <exception cref="T:System.UriFormatException">The specified nodeUri is not a well formed Uri.</exception>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlParser.AddFunctionalPropertyToGraph(System.String)">
+            <summary>
+            Adds an OWL Resource of type owl:FunctionalProperty to the graph</summary>
+            <param name="nodeUri">The Uri of the resource.</param>
+            <returns>Returns a reference to the newly added resource.</returns>
+            <exception cref="T:System.UriFormatException">The specified nodeUri is not a well formed Uri.</exception>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlParser.AddObjectPropertyToGraph(System.String)">
+            <summary>
+            Adds an OWL Resource of type owl:ObjectProperty to the graph</summary>
+            <param name="nodeUri">The Uri of the resource.</param>
+            <returns>Returns a reference to the newly added resource.</returns>
+            <exception cref="T:System.UriFormatException">The specified nodeUri is not a well formed Uri.</exception>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlParser.AddTransitivePropertyToGraph(System.String)">
+            <summary>
+            Adds an OWL Resource of type owl:TransitiveProperty to the graph</summary>
+            <param name="nodeUri">The Uri of the resource.</param>
+            <returns>Returns a reference to the newly added resource.</returns>
+            <exception cref="T:System.UriFormatException">The specified nodeUri is not a well formed Uri.</exception>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlParser.AddSymmetricPropertyToGraph(System.String)">
+            <summary>
+            Adds an OWL Resource of type owl:SymmetricProperty to the graph</summary>
+            <param name="nodeUri">The Uri of the resource.</param>
+            <returns>Returns a reference to the newly added resource.</returns>
+            <exception cref="T:System.UriFormatException">The specified nodeUri is not a well formed Uri.</exception>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlParser.AddInverseFunctionalPropertyToGraph(System.String)">
+            <summary>
+            Adds an OWL Resource of type owl:InverseFunctionalProperty to the graph</summary>
+            <param name="nodeUri">The Uri of the resource.</param>
+            <returns>Returns a reference to the newly added resource.</returns>
+            <exception cref="T:System.UriFormatException">The specified nodeUri is not a well formed Uri.</exception>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlParser.AddDatatypePropertyToGraph(System.String)">
+            <summary>
+            Adds an OWL Resource of type owl:DatatypeProperty to the graph</summary>
+            <param name="nodeUri">The Uri of the resource.</param>
+            <returns>Returns a reference to the newly added resource.</returns>
+            <exception cref="T:System.UriFormatException">The specified nodeUri is not a well formed Uri.</exception>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlParser.AddOntologyToGraph(System.String)">
+            <summary>
+            Adds an OWL Resource of type owl:Ontology to the graph</summary>
+            <param name="nodeUri">The Uri of the resource.</param>
+            <returns>Returns a reference to the newly added resource.</returns>
+            <exception cref="T:System.UriFormatException">The specified nodeUri is not a well formed Uri.</exception>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlParser.AddOntologyPropertyToGraph(System.String)">
+            <summary>
+            Adds an OWL Resource of type owl:OntologyProperty to the graph</summary>
+            <param name="nodeUri">The Uri of the resource.</param>
+            <returns>Returns a reference to the newly added resource.</returns>
+            <exception cref="T:System.UriFormatException">The specified nodeUri is not a well formed Uri.</exception>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlParser.AddAnnotationPropertyToGraph(System.String)">
+            <summary>
+            Adds an OWL Resource of type owl:AnnotationProperty to the graph</summary>
+            <param name="nodeUri">The Uri of the resource.</param>
+            <returns>Returns a reference to the newly added resource.</returns>
+            <exception cref="T:System.UriFormatException">The specified nodeUri is not a well formed Uri.</exception>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlParser.AddIndividualToGraph(System.String,System.String)">
+            <summary>
+            Adds an OWL Individual to the graph</summary>
+            <param name="nodeUri">The Uri of the resource.</param>
+            <param name="typeUri">The Uri of the type.</param>
+            <returns>Returns a reference to the newly added resource.</returns>
+            <exception cref="T:System.UriFormatException">The specified nodeUri is not a well formed Uri.</exception>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlParser.ParseEdgeRdfAttributes(System.Xml.XmlNode,OwlDotNetApi.OwlEdge)">
+            <summary>
+            Parses the OWL Attributes rdf:resource, rdf:nodeID, rdf:parseType, and xml:lang as they appear on an edge
+            </summary>
+            <param name="node">The XmlNode on which the attributes appear</param>
+            <param name="rEdge">The OwlEdge to which the attributes must be applied</param>
+            <returns>True if the children of the specified XML Node should be parsed</returns>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlParser.ParseEdgeAttributes(System.Xml.XmlNode,OwlDotNetApi.OwlEdge)">
+            <summary>
+            Process the rdf:value and any attributes not in the rdf or xml namespace
+            </summary>
+            <param name="node">The XmlNode that attributes appear on</param>
+            <param name="rEdge">The Owl edge that the attributes must be applied to.</param>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlParser.ProcessRdfResource(System.Xml.XmlNode,OwlDotNetApi.OwlEdge,System.String)">
+            <summary>
+            Create a node from the rdf:resource attribute and attach it to a given edge as a child
+            </summary>
+            <param name="node">The XmlNode that contains the rdf:resource attribute.</param>
+            <param name="rEdge">The edge to which the new childnode must be added.</param>
+            <param name="resourceUri">The URI specified by the rdf:resource attribute.</param>
+            <remarks>If the specified Uri is null or empty a new blank node URI is created. 
+            If it is a relative URI then it is converted to an absolute URI by prefixing it with the value given by xml:base</remarks>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlParser.ProcessRdfNodeID(OwlDotNetApi.OwlEdge,System.String)">
+            <summary>
+            Process the rdf:nodeID attribute found on the OWL edge
+            </summary>
+            <param name="rEdge">The edge to which the rdf:nodeID attribute must be applied</param>
+            <param name="baseNodeID">The ID specified by the rdf:nodeID attribute</param>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlParser.ProcessRdfParseType(System.Xml.XmlNode,OwlDotNetApi.OwlEdge,System.String)">
+            <summary>
+            Processes the rdf:parseType attribute
+            </summary>
+            <param name="node">The XML Node on which the attribute appears</param>
+            <param name="rEdge">The edge to which the attribute must be applied</param>
+            <param name="parseType">The parse type as specified by the value of the attribute</param>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlParser.BuildCollection(System.Xml.XmlNode)">
+            <summary>
+            Builds an OWL Collection.
+            </summary>
+            <param name="propertyNode">The XML Node containing the children that will form the members of this list</param>
+            <returns>The head of the collection. This is the first member of the list or a nil node if the list is empty</returns>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlParser.ParseEdgeSyntax(System.Xml.XmlNode,OwlDotNetApi.OwlEdge,OwlDotNetApi.OwlNode)">
+            <summary>
+            Parses the OWL syntax on an edge.
+            </summary>
+            <param name="node">The XML Node representing the OWL edge</param>
+            <param name="rEdge">The edge</param>
+            <param name="parentNode">The parent OWL node</param>
+            <returns>True if the edge was given an ID and attached to the parent node</returns>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlParser.GetDatatypeUri(System.Xml.XmlNode)">
+            <summary>
+            Gets the rdf:datatype Uri from the specified XML element
+            </summary>
+            <param name="node">The XmlNode from which to extract the rdf:datatype attribute</param>
+            <returns>A string representing the datatype Uri. A null reference is returned if the rdf:datatype attribute is not found.</returns>
+            <remarks>This method looks for the rdf:datatype attribute on the specified XML element and returns the value.</remarks>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlParser.ProcessEdge(System.Xml.XmlNode,System.Object)">
+            <summary>
+            Processes an edge in the XML document. 
+            </summary>
+            <param name="node">The XmlNode to process.</param>
+            <param name="parent">The parent of the current node.</param>
+            <returns>Returns a reference to the new edge created</returns>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlParser.MoveEdges(OwlDotNetApi.OwlNode,OwlDotNetApi.OwlNode)">
+            <summary>
+            Moves all the edges associated with the source node to the destination node
+            </summary>
+            <param name="srcNode">The node from which the edges are to be moved.</param>
+            <param name="destNode">The node to which the edges are to be moved</param>
+            <remarks>This method moves all the edges from the src node to the dest node. 
+            The src node is not removed from the graph. </remarks>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlParser.QualifyResource(System.String,System.String)">
+            <summary>
+            Converts the value given by rdf:about into a fully qualified Uri
+            </summary>
+            <param name="val">The value specified by the rdf:about attribute</param>
+            <param name="xmlBaseUriString">An string specifying an xml:base Uri to use. This parameter can be null.</param>
+            <returns>A well formed Uri string</returns>
+            <remarks>This method should only be used to convert rdf:about and rdf:resource values into fully qualified URIs. 
+            If the xmlBaseUriString is null or an empty string then the global value for xml:base will be used.</remarks>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlParser.GetAbsolutePath(System.String,System.String)">
+            <summary>
+            Returns an absolute path by combining the initial path and a relative path
+            </summary>
+            <param name="initPath">A string representing the initial path</param>
+            <param name="relPath">A string representing the relative path</param>
+            <returns>A string representing the absolute path formed by the combination of the initial and relative paths.</returns>
+            <remarks>The init path should be terminated at both ends by / or \ characters. This method concatenates the initial 
+            and relative paths and returns an absolute path with proper handling of ../ prefixes on the relative path</remarks>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlParser.PrependXmlBase(System.String,System.String)">
+            <summary>
+            Makes a URI string from the specified ID by prepending the uri specified by xml:base to it
+            </summary>
+            <param name="id">The ID to convert to a URI string</param>
+            <param name="xmlBaseUri">A string containing an xml:base Uri to use rather than the global xml:base Uri.</param>
+            <remarks>This method checks the given xmlBaseUri string for the value of the xml:base URI to prepend to the ID.
+            If it is null or an empty string then the global xml:base is used.</remarks>
+            <returns>A string containing a well formed URI.</returns>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlParser.GetXmlBase(System.Xml.XmlNode)">
+            <summary>
+            Gets the value of the xml:base attribute from the XmlNode if one exists
+            </summary>
+            <param name="node">An Xml Node</param>
+            <returns>A string containing the xml:base uri. Returns null if the xml:base attribute is not found</returns>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlParser.IsOwlRdfXmlProperty(System.Xml.XmlNode)">
+            <summary>
+            Determines whether the XML Node is a property that is part of the RDF or XML syntax
+            </summary>
+            <param name="prop">An XmlNode</param>
+            <returns>True if the property is part of the OWL, RDF or XML syntax or if the property is reserved for use by xml</returns>
+            <remarks>This method returns true is the property localname or prefix begins with xml (regardless of whether xml is in uppercase, lowercase or
+            any combination thereof. </remarks>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlParser.IsSyntacticElement(System.Xml.XmlNode)">
+            <summary>
+            Determines whether the XML Node is a syntactic OWL, RDF, or RDFS element on an edge
+            </summary>
+            <param name="prop">An XmlNode</param>
+            <returns>True if the element is a syntactic OWL, RDF, or RDFS element.</returns>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlParser.IsNonSyntacticElement(System.Xml.XmlNode)">
+            <summary>
+            Determines whether the XML Node is a non-syntactic OWL, RDF, or RDFS element on an edge
+            </summary>
+            <param name="prop">An XmlNode</param>
+            <returns>True if the element is a non-syntactic OWL, RDF, or RDFS element.</returns>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlParser.IsXmlName(System.String)">
+            <summary>
+            Determines whether the specified name is an XML name
+            </summary>
+            <param name="name">A Name</param>
+            <returns>True if the name is an XML name</returns>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlParser.IsUnqualifiedRdfProperty(System.Xml.XmlNode)">
+            <summary>
+            Determines whether the XML Node is an unqualified RDF property
+            </summary>
+            <param name="prop"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlParser.GetBlankNodeUri(System.String)">
+            <summary>
+            Gets a URI string for a new blank node
+            </summary>
+            <param name="baseID">The base ID from which the Uri must be created.</param>
+            <returns>A string containing a well formed URI</returns>
+        </member>
+        <member name="M:OwlDotNetApi.OwlXmlParser.GetDummyNodeUri(System.String)">
+            <summary>
+            Gets a URI string for a new blank node
+            </summary>
+            <param name="baseID">The base ID from which the Uri must be created.</param>
+            <returns>A string containing a well formed URI</returns>
+        </member>
+    </members>
+</doc>

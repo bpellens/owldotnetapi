@@ -1,0 +1,5 @@
+OwlDotNetApi RELEASE NOTES
+==========================
+
+OwlDotNetApi 1.0 Initial Version
+	- DataRange class is not implemented yet
