@@ -28,6 +28,7 @@ using System;
 using System.Collections;
 using System.Xml;
 using System.IO;
+using System.Collections.Generic;
 
 namespace OwlDotNetApi
 {
@@ -52,6 +53,8 @@ namespace OwlDotNetApi
         /// of the namespace and as value the prefix;
         /// </summary>
         private OwlNamespaceCollection _namespaces;
+
+        private List<OwlNode> _visited;
 
         #endregion
 
@@ -136,8 +139,7 @@ namespace OwlDotNetApi
             Warnings.Clear();
             Errors.Clear();
 
-            // Reset the graph for visitation
-            ResetGraph(graph);
+            _visited.Clear();
 
             XmlElement root = _owlDocument.CreateElement("rdf:RDF", OwlNamespaceCollection.RdfNamespace);
             _owlDocument.AppendChild(root);
@@ -197,7 +199,7 @@ namespace OwlDotNetApi
                     XmlComment comment = _owlDocument.CreateComment("Visiting a regular node: " + node.GetType());
                     parentElement.AppendChild(comment);
 
-                    node.Visited = true;
+                    _visited.Add(node);
                 }
             }
         }
@@ -279,12 +281,12 @@ namespace OwlDotNetApi
                 }
 
                 // Generate all the edges going out of this node
-                if (!node.Visited)
+                if (!_visited.Contains(node))
                     VisitEdges(node, classElement);
 
                 // Attach the node eventually to its parent
                 parentElement.AppendChild(classElement);
-                node.Visited = true;
+                _visited.Add(node);
             }
         }
 
@@ -306,7 +308,7 @@ namespace OwlDotNetApi
 
                 // Add the value of the literal
                 parentElement.InnerXml = node.Value;
-                node.Visited = true;
+                _visited.Add(node);
                 return;
             }
         }
@@ -326,12 +328,12 @@ namespace OwlDotNetApi
                 AddNameAttribute(propertyElement, node);
 
                 // Generate all the edges going out of this node
-                if (!node.Visited)
+                if (!_visited.Contains(node))
                     VisitEdges(node, propertyElement);
 
                 // Attach the node eventually to its parent
                 parentElement.AppendChild(propertyElement);
-                node.Visited = true;
+                _visited.Add(node);
             }
         }
 
@@ -370,14 +372,14 @@ namespace OwlDotNetApi
                 AddNameAttribute(propertyElement, node);
 
                 // Generate all the edges going out of this node
-                if (!node.Visited)
+                if (!_visited.Contains(node))
                 {
                     VisitEdges(node, propertyElement);
                 }
 
                 // Attach the node eventually to its parent
                 parentElement.AppendChild(propertyElement);
-                node.Visited = true;
+                _visited.Add(node);
             }
         }
 
@@ -416,12 +418,12 @@ namespace OwlDotNetApi
                 AddNameAttribute(individualElement, node);
 
                 // Generate all the edges going out of this node
-                if (!node.Visited)
+                if (!_visited.Contains(node))
                     VisitEdges(node, individualElement);
 
                 // Attach the node eventually to its parent
                 parentElement.AppendChild(individualElement);
-                node.Visited = true;
+                _visited.Add(node);
             }
         }
 
@@ -440,7 +442,7 @@ namespace OwlDotNetApi
                 AddNameAttribute(propertyElement, node);
 
                 // Generate all the edges going out of this node
-                if (!node.Visited)
+                if (!_visited.Contains(node))
                 {
                     // Visit all the other edges
                     VisitEdges(node, propertyElement);
@@ -448,7 +450,7 @@ namespace OwlDotNetApi
 
                 // Attach the node eventually to its parent
                 parentElement.AppendChild(propertyElement);
-                node.Visited = true;
+                _visited.Add(node);
             }
         }
 
@@ -469,12 +471,12 @@ namespace OwlDotNetApi
                 ontologyElement.Attributes.Append(nameAttribute);
 
                 // Generate all the edges going out of this node
-                if (!node.Visited)
+                if (!_visited.Contains(node))
                     VisitEdges(node, ontologyElement);
 
                 // Attach the node eventually to its parent
                 parentElement.AppendChild(ontologyElement);
-                node.Visited = true;
+                _visited.Add(node);
             }
         }
 
@@ -493,12 +495,12 @@ namespace OwlDotNetApi
                 AddNameAttribute(propertyElement, node);
 
                 // Generate all the edges going out of this node
-                if (!node.Visited)
+                if (!_visited.Contains(node))
                     VisitEdges(node, propertyElement);
 
                 // Attach the node eventually to its parent
                 parentElement.AppendChild(propertyElement);
-                node.Visited = true;
+                _visited.Add(node);
             }
         }
 
@@ -538,12 +540,12 @@ namespace OwlDotNetApi
                 }
 
                 // Generate all the edges going out of this node
-                if (!node.Visited)
+                if (!_visited.Contains(node))
                     VisitEdges(node, restrictionElement);
 
                 // Attach the node eventually to its parent
                 parentElement.AppendChild(restrictionElement);
-                node.Visited = true;
+                _visited.Add(node);
             }
         }
 
@@ -604,7 +606,7 @@ namespace OwlDotNetApi
         private void AddNameAttribute(XmlElement element, OwlNode node)
         {
             XmlAttribute nameAttribute;
-            if (node.Visited)
+            if (_visited.Contains(node))
             {
                 nameAttribute = _owlDocument.CreateAttribute("rdf", "about", OwlNamespaceCollection.RdfNamespace);
                 nameAttribute.Value = GetNodeReference(node);
@@ -649,18 +651,6 @@ namespace OwlDotNetApi
                 name = uri.Fragment;
             }
             return name;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="graph"></param>
-        private void ResetGraph(IOwlGraph graph)
-        {
-            foreach (IOwlNode node in graph.Nodes)
-            {
-                node.Visited = false;
-            }
         }
 
         #endregion
