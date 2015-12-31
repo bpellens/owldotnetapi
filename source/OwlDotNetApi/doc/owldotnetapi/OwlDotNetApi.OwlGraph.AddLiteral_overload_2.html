@@ -1,0 +1,79 @@
+<html dir="LTR">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252" />
+    <meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5" />
+    <title>OwlGraph.AddLiteral Method (String, String, String)</title>
+    <xml>
+    </xml>
+    <link rel="stylesheet" type="text/css" href="MSDN.css" />
+  </head>
+  <body id="bodyID" class="dtBODY">
+    <div id="nsbanner">
+      <div id="bannerrow1">
+        <table class="bannerparthead" cellspacing="0">
+          <tr id="hdr">
+            <td class="runninghead">OwlDotNetApi Documentation</td>
+            <td class="product">
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div id="TitleRow">
+        <h1 class="dtH1">OwlGraph.AddLiteral Method (String, String, String)</h1>
+      </div>
+    </div>
+    <div id="nstext">
+      <p> Adds a literal to the Graph </p>
+      <div class="syntax">public <a href="OwlDotNetApi.IOwlLiteral.html">IOwlLiteral</a> AddLiteral(<br />   <a href="ms-help://MS.NETFrameworkSDKv1.1/cpref/html/frlrfSystemStringClassTopic.htm">string</a> <i>literalValue</i>,<br />   <a href="ms-help://MS.NETFrameworkSDKv1.1/cpref/html/frlrfSystemStringClassTopic.htm">string</a> <i>langID</i>,<br />   <a href="ms-help://MS.NETFrameworkSDKv1.1/cpref/html/frlrfSystemStringClassTopic.htm">string</a> <i>datatypeUri</i><br />);</div>
+      <h4 class="dtH4">Parameters</h4>
+      <dl>
+        <dt>
+          <i>literalValue</i>
+        </dt>
+        <dd>A string representing the value of the literal.</dd>
+        <dt>
+          <i>langID</i>
+        </dt>
+        <dd>A string representing the Language ID of the literal.</dd>
+        <dt>
+          <i>datatypeUri</i>
+        </dt>
+        <dd>A string representing the datatype URI of the literal.</dd>
+      </dl>
+      <h4 class="dtH4">Return Value</h4>
+      <p>An object that implements the IOwlLiteral interface. This is a reference to the newly added literal.</p>
+      <h4 class="dtH4">Implements</h4>
+      <p>
+        <a href="OwlDotNetApi.IOwlGraph.AddLiteral_overload_2.html">IOwlGraph.AddLiteral</a>
+      </p>
+      <h4 class="dtH4">Remarks</h4>
+      <p>This method looks in the graph to determine whether a literal with the specified value, datatype and langID exists in the Graph. If the literal exists a reference to the existing literal is returned. If it does not exist then a new literal with the specified value, datatype and LangID is created, added to the graph and returned. Any parameter supplied to this method, except literalValue, can be null or empty and it will be ignored.</p>
+      <h4 class="dtH4">Exceptions</h4>
+      <div class="tablediv">
+        <table class="dtTABLE" cellspacing="0">
+          <tr valign="top">
+            <th width="50%">Exception Type</th>
+            <th width="50%">Condition</th>
+          </tr>
+          <tr valign="top">
+            <td width="50%">
+              <a href="ms-help://MS.NETFrameworkSDKv1.1/cpref/html/frlrfSystemUriFormatExceptionClassTopic.htm">UriFormatException</a>
+            </td>
+            <td width="50%">The specified datatype URI is not null and is not a well formed URI.</td>
+          </tr>
+        </table>
+      </div>
+      <h4 class="dtH4">See Also</h4>
+      <p>
+        <a href="OwlDotNetApi.OwlGraph.html">OwlGraph Class</a> | <a href="OwlDotNetApi.html">OwlDotNetApi Namespace</a> | <a href="OwlDotNetApi.OwlGraph.AddLiteral_overloads.html">OwlGraph.AddLiteral Overload List</a></p>
+      <object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e" viewastext="true" style="display: none;">
+        <param name="Keyword" value="AddLiteral method">
+        </param>
+        <param name="Keyword" value="AddLiteral method, OwlGraph class">
+        </param>
+        <param name="Keyword" value="OwlGraph.AddLiteral method">
+        </param>
+      </object>
+    </div>
+  </body>
+</html>
